@@ -1,33 +1,46 @@
+const outputSoundEl = document.getElementById("key_output");
+const musicEl = document.getElementById("music");
+const txt_path = "key.txt"
+
 async function main(){
-    const output_sound = document.getElementById("key_output");
-    const music = document.getElementById("music");
-    const txt_path = "key.txt"
     let sound_name = "bell1001"
     let key_sound = await txt_to_json(txt_path)
-    let count = 0;
+    //let count = 0;
+    let gameContext = {
+        "sheetData": key_sound,
+        "count": 0,
+        "keyPressed": ""
+    }
 
     document.onkeyup = function (event) {
-        if (!music.paused) {
-            let charCode = event.keyCode;
-            sound_controller(music.currentTime, charCode);
+        if (!musicEl.paused) {
+            gameContext.keyPressed = event.key;
+
+            sound_controller(gameContext);
         }
     }
 }
 
-function sound_controller(currentTime, key) {
-    var key_time = Math.floor(currentTime * 10) / 10
-    console.log(key_time + " " + String.fromCharCode(key))
-    if (currentTime > parseFloat(test_json[count].key_time)) {
-        sound_name = test_json[count].sound_name;
-        count++;
+function sound_controller(gameContext) {
+    const {sheetData, _count, keyPressed} = gameContext;
+    const currentTime = musicEl.currentTime
+    let keyPressedTime = Math.floor(currentTime * 10) / 10
+    clog(`${keyPressedTime}  ${keyPressed}`)
+
+    if (currentTime > parseFloat(sheetData[gameContext.count].keytime)) {
+        sound_name = test_json[gameContext.count].sound_name;
+        gameContext.count++;
+        outputSoundEl.setAttribute("src", `./song/SR01/Key/${sound_name}.ogg`)
+        outputSoundEl.play();
+    } else {
+        clog("You missed the key.");
     }
-    console.log(sound_name)
-    console.log("next key :" + test_json[count].key  +"          time :" +test_json[count].key_time)
-    output_sound.setAttribute("src", "./song/SR01/Key/" + sound_name + ".ogg")
-    output_sound.play();
+
+    // clog(sound_name)
+    clog(`Next key: ${sheetData[gameContext.count].keyPressed}, Time: ${sheetData[gameContext.count].keytime}`)
+    
 
 }
-
 
 async function txt_to_json(txt_path) { //出现未知原因 无法直接引用 拿来当生成
 
@@ -39,7 +52,7 @@ async function txt_to_json(txt_path) { //出现未知原因 无法直接引用 �
     text.split("\n").forEach(line => {
         let fields = [];
         let inlineIndex = 0;
-        lineCount++;
+
 
         line.split(",").forEach(info => {
             if (inlineIndex <= 3) {
@@ -56,12 +69,23 @@ async function txt_to_json(txt_path) { //出现未知原因 无法直接引用 �
                 "sound_name": fields[2],
                 "keyPressed": fields[3],
         }
-
+        lineCount++;
         //result.push(accurate_key);
     })
 
-    console.log(result)
+    // clog(result)
     return result
+}
+
+function clog(text) {
+    let currentdate = new Date(); 
+    let datetime = "[" +  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds() + "] ";
+    //console.log('[index.js]' + datetime + text);
+    console.log(text);
+
 }
 
 const test_json = [
