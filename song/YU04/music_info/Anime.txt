@@ -1,0 +1,288 @@
+[Load]
+
+	BGANIM,   0, bend.jpg
+	BGANIM,   1,  1.jpg
+	BGANIM,   2,  2.jpg
+	BGANIM,   3,  3.jpg
+	BGANIM,   4,  4.jpg
+	BGANIM,   5,  5.jpg
+	BGANIM,   6,  6.jpg
+	BGANIM,   7,  7.jpg
+
+
+	BGPIC,   0,  back.png
+	BGPIC,   1,  p1.jpg
+	BGPIC,   2,  p2.jpg
+	BGPIC,   3,  p3.jpg
+	BGPIC,   4,  p4.jpg
+	BGPIC,   5,   8.jpg
+	BGPIC,   6,   9.jpg
+	BGPIC,   7,  10.jpg
+	BGPIC,   8,  11.jpg
+	BGPIC,   9,  12.jpg
+	BGPIC,  10,  13.jpg
+	BGPIC,  11,  14.jpg
+	BGPIC,  12,  15.jpg
+	BGPIC,  13,  16.jpg
+	BGPIC,  14,  17.jpg
+	BGPIC,  15,  18.jpg
+	BGPIC,  16,  19.jpg
+	BGPIC,  17,  20.jpg
+	BGPIC,  18,  21.jpg
+	BGPIC,  19,  22.jpg
+	BGPIC,  20,  23.jpg
+	BGPIC,  21,  24.jpg
+	BGPIC,  22,  25.jpg
+	BGPIC,  23,  26.jpg
+	BGPIC,  24,  27.jpg
+	BGPIC,  25,  28.jpg
+	BGPIC,  26,  29.jpg
+	BGPIC,  27,  30.jpg
+	BGPIC,  28,  31.jpg
+	BGPIC,  29,  32.jpg
+	BGPIC,  30, wback.png
+	BGPIC,  31,  33.jpg
+
+
+	ECHAR01,   0, xback.txt 
+	ECHAR01,   1, x1.txt 
+	ECHAR01,   2, x2.txt 
+	ECHAR01,   3, x3.txt 
+	ECHAR01,   4, x4.txt 
+	ECHAR01,   5, x5a.txt
+	ECHAR01,   6, x6b.txt
+	ECHAR01,   7, x7c.txt
+	ECHAR01,   8, x8d.txt
+	ECHAR01,   9, x9e.txt
+	ECHAR01,  10, x10f.txt
+	ECHAR01,  11, x11g.txt
+	ECHAR01,  12, x12h.txt
+	ECHAR01,  13, x13.txt
+
+	ECHAR02,   0, yback.txt 
+	ECHAR02,   1, y1.txt 
+
+	ECHAR02,   3, y3a.txt
+	ECHAR02,   4, y4b.txt
+	ECHAR02,   5, y5c.txt
+	ECHAR02,   6, y6d.txt
+	ECHAR02,   7, y7e.txt
+	ECHAR02,   8, y8f.txt
+	ECHAR02,   9, y9g.txt
+	ECHAR02,  10, y10h.txt
+	ECHAR02,  11, y11.txt
+
+	ECHAR03,   0, zback.txt 
+	ECHAR03,   1, z1a.txt 
+	ECHAR03,   2, z2b.txt 
+	ECHAR03,   3, z3c.txt 
+	ECHAR03,   4, z4d.txt 
+	ECHAR03,   5, z5e.txt 
+	ECHAR03,   6, z6f.txt 
+	ECHAR03,   7, z7g.txt 
+	ECHAR03,   8, z8h.txt 
+	ECHAR03,   9, z9.txt 
+	
+[Init]
+	T0 ,  BGPIC, 0, 0
+[Before]
+[Perform]
+
+
+        T0     , BGPIC ,  30 , 0
+        T0.8   , BGANIM,   1 , 2
+        T2.8   , BGANIM,   2 , 2
+        T4.8   , BGANIM,   3 , 2
+        T6.8   , BGANIM,   4 , 2
+        T8.8   , BGANIM,   5 , 2
+        T10.8  , BGPIC,   30 , 2
+
+        T12.8  , BGPIC ,   0 , 0
+        T12.8  , POS02 ,   0 , -300
+        T12.8  , CHAR02,   1 , 0
+        T12.8  , POS02 ,   0 , -1106 , 300
+	T24.6  , CHAR02,   0 , 0
+
+        T24.6  , BGANIM,   6 , 2
+        T27.6  , BGPIC ,   1 , 1
+        T28.1  , BGPIC ,   2 , 1
+        T28.6  , BGPIC ,   3 , 1
+        T29.1  , BGPIC ,   4 , 1
+        T29.6  , BGPIC ,   1 , 1
+        T30.1  , BGPIC ,   2 , 1
+        T30.6  , BGPIC ,   3 , 1
+        T31.1  , BGPIC ,   4 , 1
+        T31.6  , BGPIC ,   1 , 1
+        T32.1  , BGPIC ,   2 , 1
+        T32.6  , BGPIC ,   3 , 1
+        T33.1  , BGPIC ,   4 , 1
+        T33.6  , BGPIC ,   1 , 1
+        T34.1  , BGPIC,   30 , 1
+
+  	T35.5  , BGANIM,   7 , 1
+
+        T37.9  , BGPIC ,   0 , 0
+        T37.9  , POS01 ,   0 , 0
+        T37.9  , CHAR01,   1 , 0
+        T37.9  , POS01 ,   -50 , 0 , 120
+	T42.4  , CHAR01,   0 , 0
+
+        T42.4  , BGPIC ,   0 , 0
+        T42.4  , POS01 ,   0 , 0
+        T42.4  , CHAR01,   2 , 0
+        T42.4  , POS01 ,   -50 , 0 , 120
+	T45.0  , CHAR01,   0 , 0
+
+        T45.0  , BGPIC ,   0 , 0
+        T45.0  , POS01 ,   0 , 0
+        T45.0  , CHAR01,   3 , 0
+        T45.0  , POS01 ,   -100 , 0 , 120
+	T48.3  , CHAR01,   0 , 0
+
+        T49.8  , BGPIC ,   5 , 1
+        T54.2  , BGPIC ,   0 , 1
+        T55.0  , BGPIC ,   6 , 2
+        T60.1  , BGPIC ,   0 , 2
+
+        T62.3  , BGPIC ,   7 , 2
+        T70.7  , BGPIC ,   8 , 2
+        T77.9  , BGPIC ,   9 , 2
+        T86.1  , BGPIC ,  10 , 2
+        T94.5  , BGPIC ,  11 , 2
+        T100.8 , BGPIC ,  12 , 2
+        T107.1 , BGPIC ,  13 , 2
+        T113.8 , BGPIC ,  14 , 2
+        T119.2 , BGPIC ,  15 , 2
+        T128.1 , BGPIC ,  16 , 2
+        T134.0 , BGPIC ,   0 , 2
+
+        T135.5 , POS01 ,   0 , 0
+        T135.5 , CHAR01,   4 , 0
+        T135.5 , POS01 ,   -200 , 0 , 180
+	T142.9 , CHAR01,   0 , 0
+
+        T142.9 , BGPIC ,   0 , 2
+
+        T145.1 , POS01 ,   0 , 0
+        T145.1 , CHAR01,   5 , 0
+        T145.1 , POS01 ,   -50 , 0 ,150
+	T151.0 , CHAR01,   0 , 0
+        T151.0 , POS03 ,   0 , 0
+        T151.0 , CHAR03,   1 , 0
+        T154.7 , CHAR03,   0 , 0
+        T154.7 , POS02 ,   320 , 0
+	T154.7 , CHAR02,   3 , 0
+	T157.7 , CHAR02,   0 , 0
+
+        T157.7 , POS01 ,   0 , 0
+        T157.7 , CHAR01,   6 , 0
+        T157.7 , POS01 ,   -50 , 0 ,150
+	T163.2 , CHAR01,   0 , 0
+        T163.2 , POS03 ,   320 , 0
+        T163.2 , CHAR03,   2 , 0
+        T166.4 , CHAR03,   0 , 0
+        T166.4 , POS02 ,   0 , 0
+	T166.4 , CHAR02,   4 , 0
+	T171.4 , CHAR02,   0 , 0
+
+        T171.4 , POS01 ,   0 , 0
+        T171.4 , CHAR01,   7 , 0
+        T171.4 , POS01 ,   -50 , 0 ,150
+	T178.0 , CHAR01,   0 , 0
+        T178.0 , POS03 ,   0 , 0
+        T178.0 , CHAR03,   3 , 0
+        T182.8 , CHAR03,   0 , 0
+        T182.8 , POS02 ,   320 , 0
+	T182.8 , CHAR02,   5 , 0
+	T188.0 , CHAR02,   0 , 0
+
+        T188.0 , POS01 ,   0 , 0
+        T188.0 , CHAR01,   8 , 0
+        T188.0 , POS01 ,   -50 , 0 ,150 
+	T194.0 , CHAR01,   0 , 0
+        T194.0 , POS03 ,   320 , 0
+        T194.0 , CHAR03,   4 , 0
+        T198.0 , CHAR03,   0 , 0
+        T198.0 , POS02 ,   0 , 0
+	T198.0 , CHAR02,   6 , 0
+	T203.0 , CHAR02,   0 , 0
+
+        T203.0 , POS01 ,   0 , 0
+        T203.0 , CHAR01,   9 , 0
+        T203.0 , POS01 ,   -50 , 0 ,150 
+	T209.0 , CHAR01,   0 , 0
+        T209.0 , POS03 ,   0 , 0
+        T209.0 , CHAR03,   5 , 0
+        T213.0 , CHAR03,   0 , 0
+        T213.0 , POS02 ,   320 , 0
+	T213.0 , CHAR02,   7 , 0
+	T218.0 , CHAR02,   0 , 0
+
+        T218.0 , POS01 ,   0 , 0
+        T218.0 , CHAR01,   10 , 0
+        T218.0 , POS01 ,   -50 , 0 ,150 
+	T224.0 , CHAR01,   0 , 0
+        T224.0 , POS03 ,   320 , 0
+        T224.0 , CHAR03,   6 , 0
+        T228.0 , CHAR03,   0 , 0
+        T228.0 , POS02 ,   0 , 0
+	T228.0 , CHAR02,   8 , 0
+	T232.0 , CHAR02,   0 , 0
+
+        T232.0 , POS01 ,   0 , 0
+        T232.0 , CHAR01,   11 , 0
+        T232.0 , POS01 ,   -50 , 0 ,150 
+	T238.0 , CHAR01,   0 , 0
+        T238.0 , POS03 ,   0 , 0
+        T238.0 , CHAR03,   7 , 0
+        T242.0 , CHAR03,   0 , 0
+        T242.0 , POS02 ,   320 , 0
+	T242.0 , CHAR02,   9 , 0
+	T247.5 , CHAR02,   0 , 0
+
+        T247.5 , BGPIC ,  17 , 1
+        T250.4 , BGPIC ,  18 , 1
+        T252.3 , BGPIC ,  19 , 1
+        T256.0 , BGPIC ,  20 , 1
+        T260.0 , BGPIC ,  21 , 1
+        T262.3 , BGPIC ,  22 , 1
+        T266.7 , BGPIC ,   0 , 1
+
+        T267.8 , BGPIC ,  25 , 0
+        T268.2 , BGPIC ,  26 , 0
+        T268.5 , BGPIC ,  27 , 0
+        T268.9 , BGPIC ,  28 , 0
+        T269.3 , BGPIC ,  29 , 0
+
+        T269.6 , BGPIC ,   0 , 0
+        T269.6 , POS01 ,   0 , 0
+        T269.6 , CHAR01,  12 , 0
+        T270.0 , POS02 , 210 , 0
+        T270.0 , CHAR02,  10 , 0
+        T270.4 , POS03 , 430 , 0
+        T270.4 , CHAR03,   8 , 0
+
+        T270.8 , CHAR01,   0 , 0
+        T270.8 , CHAR02,   0 , 0
+        T270.8 , CHAR03,   0 , 0
+        T270.8 , POS03 ,   0 , 0
+        T270.8 , CHAR03,   9 , 0
+        T271.2 , CHAR03,   0 , 0
+        T271.2 , POS01 ,   0 , 0
+        T271.2 , CHAR01,  13 , 0
+        T271.9 , CHAR01,   0 , 0
+        T271.9 , POS02 ,   0 , 0
+        T271.9 , CHAR02,  11 , 0
+        T273.7 , CHAR02,   0 , 0
+
+        T273.7 , BGPIC,   30 , 0
+        T274.4 , BGPIC,   31 , 1
+        T277.0 , BGPIC,   30 , 1
+        T278.0 , BGPIC ,  23 , 1
+        T283.0 , BGPIC ,  24 , 2
+
+[After]
+
+        T3, BGANIM,  0 , 5
+ 
+ 
