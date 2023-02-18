@@ -7,32 +7,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    .game_list {
+        height: 300px;
+        width: 200px;
+        background-color: aquamarine;
+        float: left;
+        margin-right: 30px;
+        z-index: -1;
+    }
+
+    .mainly {
+        width: 80%;
+        align-items: center;
+        height: 800px;
+        background-color: aqua;
+
+    }
+
+    .img_left {
+        width: 50%;
+        float: left;
+        height: 200px;
+        z-index: 999;
+        position: absolute;
+        left: 0;
+    }
+
+    .img_left:hover {
+        background-color: gray;
+    }
+
+    .img_right:hover {
+        background-color: aqua;
+    }
+
+    .img_right {
+        position: absolute;
+        width: 49%;
+        height: 200px;
+        float: right;
+        left: 50%;
+        z-index: 999;
+    }
+</style>
 
 <body>
     <div>
+
         <div>
-
-
         </div>
-        <div>
 
-        </div>
-        <center>
+        <div id="mainly">
+            <div id="game_list">
 
-            <div id="song">
-                <span id="tracktime">0 / 0</span>
-                <br>
-                <audio autoplay="autoplay" id="music" controls
-                    ontimeupdate="document.getElementById('tracktime').innerHTML = '0' + this.currentTime + ' / ' + this.duration; ">
-                    <source src="./song/SR01/song.ogg">
-                </audio>
+                <div id="game_img">
+                    <div id="img_left">
+
+                    </div>
+                    <div id="img_right">
+                        
+                    </div>
+                </div>
+
+
+
             </div>
-        </center>
-        <audio id="key_output"></audio>
+
+
+        </div>
+
+
+        <div>
+
+
+
+        </div>
+
     </div>
 </body>
 
 </html>
-<script type="text/javascript" src="/js/index.js">
-    
-</script>

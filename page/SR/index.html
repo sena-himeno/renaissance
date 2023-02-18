@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <div id="header">
+        </div>
+        <center>
+            <div id="img_box" style="width:800px ; height: 400px; background-color: bisque; margin-top: 50px;">
+                轮播图
+                <div>
+                    <img src="" alt="">
+                </div>
+            </div>
+        </center>
+        <bu
+        <center>
+            <dixv style="position: relative; margin-top: 1%; background-color: blueviolet; width: 100%; height: 50px;">
+                <span>歌词</span>
+            </dixv>
+        </center>
+
+        <center>
+
+            <div style="width: 10%;height:400px;background-color: cadetblue; float: left;">
+                <div id="song">
+
+                    <span id="tracktime">0 / 0</span>
+                    <br>
+                    <audio autoplay="autoplay" id="music" controls
+                        ontimeupdate="document.getElementById('tracktime').innerHTML = '0' + this.currentTime + ' / ' + this.duration; ">
+                        <source src="./SR01/song.ogg">
+                    </audio>
+                </div>
+
+            </div>
+        </center>
+        <div style="width: 80%;height: 400px;background-color: antiquewhite;float:right ;">
+            <marquee id="key_print" scrollamount ="20"><span style="font-weight: bolder;font-size: 40px;color: rgb(0, 75, 105);"></span></marquee>
+        </div>    
+    </div>
+    <audio id="key_output"></audio>
+</body>
+
+</html>
+<script type="text/javascript" src="/js/index.js">
+
+</script>
