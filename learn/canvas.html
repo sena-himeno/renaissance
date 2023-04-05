@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <center>
+            <p>test</p>
+            <br>
+            <-------------------------------------------------------------->
+                <br>
+                <div>
+                    <canvas style="width: 900px; height: 160px; background-color: rgb(255, 255, 255);"
+                        id="draw_all"></canvas>
+                </div>
+                <-------------------------------------------------------------->
+        </center>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript">
+    const canvas_main = document.getElementById("draw_all");
+    var ctx = canvas_main.getContext('2d');
+    
+
+
+    // ----------------------------------------------------
+  
+    
+    // 410 * 105   - > 40  35
+    
+    //-----------------------------------------------------method
+    
+    // draw_line(ctx,35,5);
+    
+    var img_print_key = new Image();
+    img_print_key.src = "./img/SongAlphabet.png"
+    function key_output(img_key){
+
+        ctx.beginPath();
+        draw_line(ctx,35,5);
+        
+        key_A.draw(img_key);
+
+
+
+    }
+    key_output(img_print_key);
+
+
+    
+
+
+
+</script>
