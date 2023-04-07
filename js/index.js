@@ -4,10 +4,11 @@ const txt_path = "./SR01/key.txt";
 const key_print = document.getElementById("key_print");
 var sound_name;
 var count = 0;
-var print_content
+var print_content = "";
 key_print.append(print_content)
 async function print_key(key_sound){ //生成key文本用
-    setInterval(function() {
+    clog(key_sound);
+    let interval =  setInterval(function() {
         if(Math.floor(musicEl.currentTime * 10) / 10 >= Math.floor(parseFloat(key_sound[count].keytime) * 10)/ 10 ){
             print_content+= (key_sound[count].keyPressed)
             count++;
@@ -18,9 +19,13 @@ async function print_key(key_sound){ //生成key文本用
         clog(Math.floor(musicEl.currentTime * 10) / 10)
         clog(Math.floor(parseFloat(key_sound[count].keytime) * 10)/ 10)
         clog(count)
-        clog(print_content)
+        clog(print_content) 
+        clog( key_sound.length)
+        if(count == key_sound.length -1){
+            clearInterval(interval)
+        }
     },100)
-    
+
 
 }
 async function main() {
@@ -33,7 +38,7 @@ async function main() {
         "keyPressed": ""
     }
 
-    // print_key(key_sound)
+    print_key(key_sound)
     document.onkeyup = function (event) {
         if (!musicEl.paused) {
             gameContext.keyPressed = event.key;

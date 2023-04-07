@@ -1,32 +1,47 @@
-const canvas_main = document.getElementById("draw_all");
-canvas_main.width = 600;
-canvas_main.height = 150;
-var ctx = canvas_main.getContext('2d');
-var img_print_key = new Image();
-img_print_key.src = "./img/SongAlphabet.png"
-
-
-// ------------------------------------
-
-function draw_line(ctx,height,item){
-    ctx.beginPath();
-    for(var i = 0; i <= item; i ++){
-        ctx.moveTo(0,i * height);
-        ctx.lineTo(ctx.canvas.width, i*height);
+var key_A = {
+    img_position_x:0,
+    img_position_y:0,
+    print_size_x:15,
+    print_size_y:28,
+    img_size_x:35,
+    img_size_y:35,
+    cur_x:canvas_main.width,
+    cur_y: 5,
+    vx: -1,
+    vy: 0,
+    frames:1000 / 60,
+    color: 'black',
+    draw: function (img_key) {
+        var intervel =  setInterval(function(){
+            ctx.beginPath();
+            ctx.clearRect(key_A.cur_x+1,key_A.cur_y ,key_A.print_size_x, key_A.print_size_y);
+            ctx.drawImage(img_key,key_A.img_position_x,key_A.img_position_y,key_A.img_size_x,key_A.img_size_y,key_A.cur_x,key_A.cur_y,key_A.print_size_x,key_A.print_size_y);
+            key_A.cur_x =  key_A.cur_x + key_A.vx;
+            console.log(key_A.cur_x)
+            if( key_A.cur_x <= -35){
+            key_A = null;
+            console.log("brake")
+            console.log(key_A)
+            clearInterval(intervel)
+            }
+        }
+        ,key_A.frames)
+    },
+    brake: function(){
+        
     }
-    ctx.stroke()
-}
+    
+};
+
 class Output_Key{
     constructor(key){
         this.color = 'black'
         this.frames = 1000 / 60
         this.draw_key = key;
         this.cur_x = canvas_main.width;
-        this.vx = -5
+        this.vx = -2
         this.vy = 0
-
         // ------------------------------
-        
         this.arr_index = 0;
         this.print_size_x=15
         this.print_size_y=28
@@ -81,12 +96,32 @@ class Output_Key{
             this.img_position_y=70
             this.img_position_x=this.arr_index * 41
         }
-    }
 
+    }
+    // test(img_key){
+    //     // console.log("key: " + this.draw_key)
+    //     console.log("vx1: " + this.cur_x)
+    // }
+    // draw(img_key){
+    //     var intervel =  setInterval(()=>{
+    //         ctx.clearRect(this.cur_x+1,this.cur_y ,this.print_size_x, this.print_size_y);
+    //         ctx.drawImage(img_key,this.img_position_x,this.img_position_y,this.img_size_x,this.img_size_y,this.cur_x,this.cur_y,this.print_size_x,this.print_size_y);
+    //         this.cur_x =  this.cur_x + this.vx;
+    //         // console.log(1)
+    //         if( this.cur_x <= -35){
+        //         clearInterval(intervel)
+        //         }
+        //     }
+        //     ,
+        //     this.frames
+        //     // 100
+        //     )
+        // }
         draw(img_key){
             var callbackFn =  () =>{
                 if (this.cur_x >= -28) {
-                ctx.clearRect(this.cur_x+5,this.cur_y ,this.print_size_x, this.print_size_y);
+                // console.log(this.cur_x)
+                ctx.clearRect(this.cur_x+1,this.cur_y ,this.print_size_x, this.print_size_y);
                 ctx.drawImage(img_key,this.img_position_x,this.img_position_y,this.img_size_x,this.img_size_y,this.cur_x,this.cur_y,this.print_size_x,this.print_size_y);
                 this.cur_x =  this.cur_x + this.vx;
                 window.requestAnimationFrame(callbackFn)
@@ -95,4 +130,19 @@ class Output_Key{
         window.requestAnimationFrame(callbackFn)
 
     }
+}
+async function print_key(key_sound){ //生成key文本用
+    setInterval(function() {
+        if(Math.floor(musicEl.currentTime * 10) / 10 >= Math.floor(parseFloat(key_sound[count].keytime) * 10)/ 10 ){
+            print_content+= (key_sound[count].keyPressed)
+            count++;
+        }
+        else{
+            print_content += '_';
+        }
+        clog(Math.floor(musicEl.currentTime * 10) / 10)
+        clog(Math.floor(parseFloat(key_sound[count].keytime) * 10)/ 10)
+        clog(count)
+        clog(print_content)
+    },100)
 }
