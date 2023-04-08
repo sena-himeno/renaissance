@@ -16,7 +16,7 @@
             <-------------------------------------------------------------->
                 <br>
                 <div>
-                    <canvas style="width: 800px; background-color: rgb(255, 255, 255);"
+                    <canvas style="width: 600px; background-color: rgb(255, 255, 255);"
                         id="draw_all"></canvas>
                 </div>
                 <-------------------------------------------------------------->
@@ -28,47 +28,22 @@
 <script type="text/javascript">
     const canvas_main = document.getElementById("draw_all");
     canvas_main.width = 1200;
-    canvas_main.height = 150;
+    canvas_main.height = 300;
     var ctx = canvas_main.getContext('2d');
     var img_print_key = new Image();
     img_print_key.src = "./img/SongAlphabet.png"
-    
-
-
-    // ----------------------------------------------------
-    var key_A = {
-        img_position_x:0,
-        img_position_y:0,
-        print_size_x:15,
-        print_size_y:28,
-        img_size_x:35,
-        img_size_y:35,
-        cur_y: 5,
-        cur_x:canvas_main.width, //default
-        vx: -2,
-        vy: 0,
-        frames:1000 / 60,
-        color: 'black',
-        draw: function (img_key) {
-            var intervel =  setInterval(function(){
-                ctx.clearRect(key_A.cur_x+1,key_A.cur_y ,key_A.print_size_x, key_A.print_size_y);
-                ctx.drawImage(img_key,key_A.img_position_x,key_A.img_position_y,key_A.img_size_x,key_A.img_size_y,key_A.cur_x,key_A.cur_y,key_A.print_size_x,key_A.print_size_y);
-                key_A.cur_x =  key_A.cur_x + key_A.vx;
-                console.log(key_A.cur_x)
-                if( key_A.cur_x <= -28){
-                key_A = null;
-                console.log("brake")
-                console.log(key_A)
-                clearInterval(intervel)
-                }
-            }
-            ,key_A.frames)
-        },
-        brake: function(){
-            
-        }
-        
-    };
+    var img_position_y_map = {
+        'A':10,'Q':10,'Z':10,
+        'S':9,'W':9,'X':9,
+        'D':8,'E':8,'C':8,
+        'F':7,'R':7,'V':7,
+        'G':6,'T':6,'B':6,
+        'H':5,'Y':5,'N':5,
+        'J':4,'U':4,'M':4,
+        'K':3,'I':3,'<':3,
+        'L':2,'O':2,'>':2,
+        ':':1,'P':1,'?':1,
+    }
     function draw_line(ctx,height,item){
         ctx.beginPath();
         for(var i = 0; i <= item; i ++){
@@ -83,29 +58,28 @@
         this.frames = 1000 / 60
         this.draw_key = key;
         this.cur_x = canvas_main.width;
-        this.vx = -5
+        this.vx = - 5
         this.vy = 0
         // ------------------------------
         this.arr_index = 0;
-        this.print_size_x=15
+        this.print_size_x=28
         this.print_size_y=28
         this.img_size_y=35
         this.img_size_x=35
         this.arr_index = 0;
+        this.cur_y = 1 +  (img_position_y_map[this.draw_key] - 1 )* 30 ;
         if(this.draw_key == 'A' || this.draw_key == 'S' || this.draw_key == 'D' || this.draw_key == 'F' ||
             this.draw_key == 'J' || this.draw_key == 'K' || this.draw_key == 'L' || this.draw_key == ':' ||
             this.draw_key == 'G' || this.draw_key == 'H'
         ){
             this.arr = ['A','S','D','F','J','K','L',':','G','H']
-
-            this.cur_y= 5
             for(var i = 0; i < this.arr.length; i++){
                 if(this.arr[i] == this.draw_key){
                     this.arr_index = i;
                     break;
                 }
             }
-            this.img_position_y=0
+            this.img_position_y = 0
             this.img_position_x=this.arr_index * 41
         }
         if(this.draw_key == 'Q' || this.draw_key == 'W' || this.draw_key == 'E' || this.draw_key == 'R' ||
@@ -113,8 +87,6 @@
             this.draw_key == 'T' || this.draw_key == 'Y'
         ){
             this.arr = ['Q','W','E','R','U','I','O','P','T','Y']
-
-            this.cur_y= 5
             for(var i = 0; i < this.arr.length; i++){
                 if(this.arr[i] == this.draw_key){
                     this.arr_index = i;
@@ -129,8 +101,6 @@
             this.draw_key == 'B' || this.draw_key == 'N'
         ){
             this.arr = ['Z','X','C','V','M','<','>','?','B','N']
-
-            this.cur_y= 5
             for(var i = 0; i < this.arr.length; i++){
                 if(this.arr[i] == this.draw_key){
                     this.arr_index = i;
@@ -142,25 +112,6 @@
         }
 
     }
-    // test(img_key){
-    //     // console.log("key: " + this.draw_key)
-    //     console.log("vx1: " + this.cur_x)
-    // }
-    // draw(img_key){
-    //     var intervel =  setInterval(()=>{
-    //         ctx.clearRect(this.cur_x+1,this.cur_y ,this.print_size_x, this.print_size_y);
-    //         ctx.drawImage(img_key,this.img_position_x,this.img_position_y,this.img_size_x,this.img_size_y,this.cur_x,this.cur_y,this.print_size_x,this.print_size_y);
-    //         this.cur_x =  this.cur_x + this.vx;
-    //         // console.log(1)
-    //         if( this.cur_x <= -35){
-        //         clearInterval(intervel)
-        //         }
-        //     }
-        //     ,
-        //     this.frames
-        //     // 100
-        //     )
-        // }
         draw(img_key){
             var callbackFn =  () =>{
                 if (this.cur_x >= -28) {
@@ -172,13 +123,12 @@
             }
         }
         window.requestAnimationFrame(callbackFn)
-
     }
 }
     // new Output_Key('A').draw(img_print_key);
-    draw_line(ctx,35,5);        
+    draw_line(ctx,30,10);        
     function key_output(img_key){
-        new Output_Key('<').draw(img_key)
+        new Output_Key('A').draw(img_key)
         
 
     }
@@ -191,6 +141,6 @@
     }
     test_quene()
     // key_output(img_print_key)
-
-
+    console.log(new Output_Key('A'))
+    
 </script>
