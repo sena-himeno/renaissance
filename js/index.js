@@ -1,17 +1,68 @@
 const outputSoundEl = document.getElementById("key_output");
+const luncher = document.getElementById("game_start");
 const musicEl = document.getElementById("music");
 const txt_path = "./SR01/key.txt";
 const key_print = document.getElementById("key_print");
 var sound_name;
 var count = 0;
 var print_content = "";
+
+var audio_player = new Audio();
+audio_player.src = "/page/SR/SR01/song.ogg"
+
+
+const song_info = {
+
+}
+class Play{
+    constructor(
+        // song_name,
+        key_sound) {
+        // this.song_name = song_name;
+        this.key_sound = key_sound;
+    }
+    init(){
+        count = 0;
+        sound_name = "bell1001";
+    }
+    run() {
+        this.init();
+        audio_player.play();
+        this.print_key();
+    }
+    async print_key(key_sound) { //生成key文本用
+        clog(key_sound);
+        let interval = setInterval(function () {
+            if (count == key_sound.length) {
+                clearInterval(interval)
+            }
+            if (Math.floor(musicEl.currentTime * 10) / 10 + 4 == Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10) {
+                console.log(key_sound[count].keyPressed)
+                console.log(typeof (key_sound[count].keyPressed))
+                clog(key_sound[count].keyPressed.toUpperCase().charAt(0))
+                new Output_Key(key_sound[count].keyPressed.toUpperCase().charAt(0)).draw(img_print_key)
+                print_content += (key_sound[count].keyPressed)
+                
+                count++;
+            }
+            else {
+                print_content += '_';
+            }
+        }, 100)
+    
+    
+    }
+
+}
+
+
 async function print_key(key_sound) { //生成key文本用
     clog(key_sound);
     let interval = setInterval(function () {
         if (count == key_sound.length) {
             clearInterval(interval)
         }
-        clog(Math.floor(musicEl.currentTime * 10) / 10 + 4 + " seconds" + Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10);
+        // clog(Math.floor(musicEl.currentTime * 10) / 10 + 4 + " seconds" + Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10);
         if (Math.floor(musicEl.currentTime * 10) / 10 + 4 == Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10) {
             clog("---------------------------")
             clog(Math.floor( ( Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10) - (musicEl.currentTime * 10) / 10)  );
@@ -42,8 +93,9 @@ async function print_key(key_sound) { //生成key文本用
 
 }
 async function main() {
-    sound_name = "bell1001";
+    // sound_name = "bell1001";
     let key_sound = await txt_to_json(txt_path)
+    // luncher.onclick=function(){ new Play(key_sound).init() };
     //let count = 0;
     let gameContext = {
         "sheetData": key_sound,

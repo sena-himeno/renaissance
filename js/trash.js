@@ -146,3 +146,40 @@ async function print_key(key_sound){ //生成key文本用
         clog(print_content)
     },100)
 }
+
+async function print_key(key_sound) { //生成key文本用
+    clog(key_sound);
+    let interval = setInterval(function () {
+        if (count == key_sound.length) {
+            clearInterval(interval)
+        }
+        // clog(Math.floor(musicEl.currentTime * 10) / 10 + 4 + " seconds" + Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10);
+        if (Math.floor(musicEl.currentTime * 10) / 10 + 4 == Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10) {
+            clog("---------------------------")
+            clog(Math.floor( ( Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10) - (musicEl.currentTime * 10) / 10)  );
+            clog("---------------------------")
+            console.log(key_sound[count].keyPressed)
+            console.log(typeof (key_sound[count].keyPressed))
+            clog(key_sound[count].keyPressed.toUpperCase().charAt(0))
+            new Output_Key(key_sound[count].keyPressed.toUpperCase().charAt(0)).draw(img_print_key)
+            print_content += (key_sound[count].keyPressed)
+
+            count++;
+        }
+        // if (Math.floor(musicEl.currentTime * 10) / 10 >= Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10) {
+            // print_content += (key_sound[count].keyPressed)
+        //     count++;
+        // }
+        else {
+            print_content += '_';
+        }
+        // clog(Math.floor(musicEl.currentTime * 10) / 10)
+        // clog(Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10)
+        // clog(count)
+        // clog(print_content)
+        // clog(key_sound.length)
+
+    }, 100)
+
+
+}
