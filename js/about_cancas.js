@@ -5,8 +5,6 @@ var ctx = canvas_main.getContext('2d');
 var img_print_key = new Image();
 img_print_key.src = "/img/SongAlphabet.png"
 
-
-
 var img_position_y_map = {
     'A':10,'Q':10,'Z':10,
     'S':9,'W':9,'X':9,
@@ -19,8 +17,6 @@ var img_position_y_map = {
     'L':2,'O':2,'>':2,
     ':':1,'P':1,'?':1,
 }
-
-
 
 // ------------------------------------
 

@@ -1,109 +1,82 @@
 const outputSoundEl = document.getElementById("key_output");
 const luncher = document.getElementById("game_start");
-const musicEl = document.getElementById("music");
-const txt_path = "./SR01/key.txt";
+// const musicEl = document.getElementById("music");
 const key_print = document.getElementById("key_print");
+
+
 var sound_name;
 var count = 0;
 var print_content = "";
-
 var audio_player = new Audio();
-audio_player.src = "/page/SR/SR01/song.ogg"
-
+var musicEl = audio_player;
 
 const song_info = {
 
 }
+
+const txt_path = "./SR01/key.txt";
+audio_player.src = "/page/SR/SR01/song.ogg"
+
+
 class Play{
     constructor(
-        // song_name,
-        key_sound) {
-        // this.song_name = song_name;
-        this.key_sound = key_sound;
+        key_info,musicEl,audio_player) {
+        this.key_info = key_info;
+        this.musicEl = musicEl;
+        this.audio_player = audio_player;
     }
     init(){
+        this.audio_player.load()
         count = 0;
-        sound_name = "bell1001";
+        print_content = "";
+        sound_name = this.key_info[0].sound_name;
     }
     run() {
         this.init();
         audio_player.play();
         this.print_key();
+        luncher.style.display= "none";
     }
-    async print_key(key_sound) { //生成key文本用
-        clog(key_sound);
-        let interval = setInterval(function () {
-            if (count == key_sound.length) {
+    end(){
+        luncher.style.display = "block";
+    }
+    async print_key(key_info) { //生成key文本用
+        clog(this.musicEl.currentTime);
+        let interval = setInterval( ()=> {
+            if (count == this.key_info.length) {
                 clearInterval(interval)
+                this.end()
             }
-            if (Math.floor(musicEl.currentTime * 10) / 10 + 4 == Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10) {
-                console.log(key_sound[count].keyPressed)
-                console.log(typeof (key_sound[count].keyPressed))
-                clog(key_sound[count].keyPressed.toUpperCase().charAt(0))
-                new Output_Key(key_sound[count].keyPressed.toUpperCase().charAt(0)).draw(img_print_key)
-                print_content += (key_sound[count].keyPressed)
-                
+            if (Math.floor(this.musicEl.currentTime * 10) / 10 + 4 == Math.floor(parseFloat(this.key_info[count].keytime) * 10) / 10) {
+                new Output_Key(this.key_info[count].keyPressed.toUpperCase().charAt(0)).draw(img_print_key)
+                print_content += (this.key_info[count].keyPressed)
                 count++;
             }
             else {
                 print_content += '_';
             }
+            clog(print_content)
+
         }, 100)
-    
     
     }
 
 }
 
-
-async function print_key(key_sound) { //生成key文本用
-    clog(key_sound);
-    let interval = setInterval(function () {
-        if (count == key_sound.length) {
-            clearInterval(interval)
-        }
-        // clog(Math.floor(musicEl.currentTime * 10) / 10 + 4 + " seconds" + Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10);
-        if (Math.floor(musicEl.currentTime * 10) / 10 + 4 == Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10) {
-            clog("---------------------------")
-            clog(Math.floor( ( Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10) - (musicEl.currentTime * 10) / 10)  );
-            clog("---------------------------")
-            console.log(key_sound[count].keyPressed)
-            console.log(typeof (key_sound[count].keyPressed))
-            clog(key_sound[count].keyPressed.toUpperCase().charAt(0))
-            new Output_Key(key_sound[count].keyPressed.toUpperCase().charAt(0)).draw(img_print_key)
-            print_content += (key_sound[count].keyPressed)
-
-            count++;
-        }
-        // if (Math.floor(musicEl.currentTime * 10) / 10 >= Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10) {
-            // print_content += (key_sound[count].keyPressed)
-        //     count++;
-        // }
-        else {
-            print_content += '_';
-        }
-        clog(Math.floor(musicEl.currentTime * 10) / 10)
-        clog(Math.floor(parseFloat(key_sound[count].keytime) * 10) / 10)
-        clog(count)
-        clog(print_content)
-        clog(key_sound.length)
-
-    }, 100)
-
-
-}
 async function main() {
     // sound_name = "bell1001";
-    let key_sound = await txt_to_json(txt_path)
-    // luncher.onclick=function(){ new Play(key_sound).init() };
-    //let count = 0;
+    let key_info = await txt_to_json(txt_path)
+        luncher.onclick = ()=>{
+            console.log("1")
+            new Play(key_info,musicEl,audio_player).run();
+        }
     let gameContext = {
-        "sheetData": key_sound,
+        "sheetData": key_info,
         "count": 0,
         "keyPressed": ""
     }
     draw_line(ctx, 30, 10);
-    print_key(key_sound)
+    // print_key(key_info)
     document.onkeyup = function (event) {
         if (!musicEl.paused) {
             gameContext.keyPressed = event.key;
@@ -150,7 +123,7 @@ async function txt_to_json(txt_path) {
             inlineIndex++;
         })
 
-        //let accurate_key = {};
+        // let accurate_key = {};
         let key_time = String(Math.floor(fields[1] * 10) / 10)
 
         result[lineCount] = {
@@ -178,3 +151,6 @@ function clog(text) {
 }
 
 main();
+
+
+
