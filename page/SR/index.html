@@ -12,15 +12,22 @@
     <div>
         <div id="header">
         </div>
-        <center>    
-            <div id="img_box" style="width:800px ; height: 400px; background-color: bisque; margin-top: 50px;">
-                轮播图
-                <div>
-                    <img src="" alt="">
+        <div>
+
+            <center>
+                <div id="select_Song" style="width:800px ; height: 400px; background-color: bisque; margin-top: 50px;">
+                    <button id="prev_song">prev_song</button>
+                    <img id="song_img" style="background-color: aqua; width: 50%; height: auto; ">
+                    <button id="next_song">next_song</button>
+                </div>    
+                <div id="img_box" style="width:800px ; height: 400px; background-color: bisque; margin-top: 50px; display: none;">
+                    轮播图
+                    <div>
+                        <img src="" alt="">
+                    </div>
                 </div>
-            </div>
-        </center>
-        <bu
+            </center>
+        </div>
         <center>
             <dixv style="position: relative; margin-top: 1%; background-color: blueviolet; width: 100%; height: 50px;">
                 <span>歌词</span>
@@ -31,14 +38,7 @@
 
             <div style="width: 10%;height:400px;background-color: cadetblue; float: left;">
                 <div id="song">
-
-                    <!-- <span id="tracktime">0 / 0</span>
-                    <br> -->
-                    <!-- <audio autoplay="autoplay" id="music" controls
-                        ontimeupdate="document.getElementById('tracktime').innerHTML = '0' + this.currentTime + ' / ' + this.duration; ">
-                        <source src="./SR01/song.ogg">
-                    </audio> -->
-                    <button id="game_start" type="button" >game_start</button>
+                    <button id="game_start" value="" type="button" >game_start</button>
                 </div>
 
             </div>
