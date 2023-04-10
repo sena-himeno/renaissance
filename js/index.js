@@ -21,11 +21,10 @@ audio_player.src = "/page/SR/SR01/song.ogg"
 
 
 class Play {
-    constructor(key_info, musicEl, audio_player, gameContext,print_content) {
+    constructor(key_info, musicEl, audio_player) {
         this.key_info = key_info;
         this.musicEl = musicEl;
         this.audio_player = audio_player;
-        this.gameContext = gameContext;
         this.print_content = "";
 
     }
@@ -47,6 +46,7 @@ class Play {
     }
     async play_main() {
         let interval = setInterval(() => {
+
             if (count == this.key_info.length) {
                 clearInterval(interval)
                 this.end()
@@ -62,7 +62,14 @@ class Play {
     }
     print_key() {
         if (Math.floor(this.musicEl.currentTime * 10) / 10 + 4 == Math.floor(parseFloat(this.key_info[count].keytime) * 10) / 10) {
+            console.log(this.key_info[count].keyPressed + " " + this.key_info[count].keyPressed == ';')
+            if(this.key_info[count].keyPressed == ';' || this.key_info[count].keyPressed == '<' || 
+            this.key_info[count].keyPressed == '>' || this.key_info[count].keyPressed == '?'){
+                new Output_Key(this.key_info[count].keyPressed).draw(img_print_key)
+            }
+            else{
             new Output_Key(this.key_info[count].keyPressed.toUpperCase().charAt(0)).draw(img_print_key)
+            }
             this.print_content += (this.key_info[count].keyPressed)
             count++;
         }
@@ -74,7 +81,58 @@ class Play {
 
 }
 
-class Key_Sound{
+class Key_Sound {
+    constructor(key_info, outputSoundEl, audio_player, musicEl) {
+        this.key_info = key_info;
+        this.outputSoundEl = outputSoundEl;
+        this.audio_player = audio_player;
+        this.musicEl = musicEl;
+        this.sound_name;
+        this.next_count;
+        this.keyPressedTime;
+        this.keyPressed;
+        this.currentTime;
+
+    }
+    init() {
+        this.sound_name = this.key_info[0].sound_name;
+        this.next_count = 0;
+
+    }
+    run() {
+        let interval = setInterval(() => {
+
+            if (musicEl.paused) {
+                clearInterval(interval)
+            }
+            document.onkeyup = (event) => {
+                this.keyPressed = event.key;
+                this.key_sound()
+            }
+            this.sync_key_sound()
+        }, 100)
+    }
+    key_sound() {
+        outputSoundEl.setAttribute("src", "./SR01/Key/"+this.sound_name+".ogg")
+        outputSoundEl.play();
+    }
+    sync_key_sound() {
+        this.currentTime = musicEl.currentTime
+        this.keyPressedTime = Math.floor(this.currentTime * 10) / 10
+        clog(this.keyPressedTime  + " and " + this.key_info[this.next_count].keytime)
+        if (this.keyPressedTime == parseFloat(this.key_info[this.next_count].keytime)) {
+            this.sound_name = this.key_info[this.next_count].sound_name;
+            this.next_count++;
+            clog("sync_key_sound,cur_key_sound_name " + sound_name);
+            outputSoundEl.setAttribute("src", "./SR01/Key/"+this.sound_name+".ogg")
+            outputSoundEl.play();
+
+        }
+        clog("Next key: " + this.key_info[this.next_count].keyPressed + ", Time: " + this.key_info[this.next_count].keytime);
+    }
+
+}
+class Select_Soung{
     constructor(){
 
     }
@@ -82,33 +140,35 @@ class Key_Sound{
 
     }
     run(){
-
+        
     }
-
 }
 
 async function main() {
-    // sound_name = "bell1001";
+
     let key_info = await txt_to_json(txt_path)
-    luncher.onclick = () => {
-        console.log("1")
-        var temp =  new Play(key_info, musicEl, audio_player,gameContext);
-        temp.run();
-    }
     let gameContext = {
         "sheetData": key_info,
         "count": 0,
         "keyPressed": ""
     }
-    draw_line(ctx, 30, 10);
-    // print_key(key_info)
-    document.onkeyup = function (event) {
-        if (!musicEl.paused) {
-            gameContext.keyPressed = event.key;
-
-            sound_controller(gameContext);
-        }
+    luncher.onclick = () => {
+        console.log("1")
+        var temp = new Play(key_info, musicEl, audio_player);
+        temp.run();
+        var key_sound_controler = new Key_Sound(key_info, outputSoundEl, audio_player, musicEl)
+        key_sound_controler.init();
+        key_sound_controler.run();
     }
+    draw_line(ctx, 30, 10);
+
+    // document.onkeyup = function (event) {
+    //     if (!musicEl.paused) {
+    //         gameContext.keyPressed = event.key;
+
+    //         sound_controller(gameContext);
+    //     }
+    // }
 }
 
 function sound_controller(gameContext) {
@@ -128,6 +188,7 @@ function sound_controller(gameContext) {
     // clog(sound_name)
     clog(`Next key: ${sheetData[gameContext.count].keyPressed}, Time: ${sheetData[gameContext.count].keytime}`)
 }
+
 
 async function txt_to_json(txt_path) {
 

@@ -15,7 +15,7 @@ var img_position_y_map = {
     'J':4,'U':4,'M':4,
     'K':3,'I':3,'<':3,
     'L':2,'O':2,'>':2,
-    ':':1,'P':1,'?':1,
+    ';':1,'P':1,'?':1,
 }
 
 // ------------------------------------
@@ -45,10 +45,10 @@ class Output_Key{
         this.arr_index = 0;
         this.cur_y = 1 +  (img_position_y_map[this.draw_key] - 1 )* 30 ;
         if(this.draw_key == 'A' || this.draw_key == 'S' || this.draw_key == 'D' || this.draw_key == 'F' ||
-            this.draw_key == 'J' || this.draw_key == 'K' || this.draw_key == 'L' || this.draw_key == ':' ||
+            this.draw_key == 'J' || this.draw_key == 'K' || this.draw_key == 'L' || this.draw_key == ';' ||
             this.draw_key == 'G' || this.draw_key == 'H'
         ){
-            this.arr = ['A','S','D','F','J','K','L',':','G','H']
+            this.arr = ['A','S','D','F','J','K','L',';','G','H']
             for(var i = 0; i < this.arr.length; i++){
                 if(this.arr[i] == this.draw_key){
                     this.arr_index = i;
