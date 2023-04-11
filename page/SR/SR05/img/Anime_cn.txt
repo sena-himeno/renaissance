@@ -1,0 +1,26 @@
+[Load]
+	BGPIC,   0, songbg_cn.png
+	BGANIM,   0, bg0[0-1].png				//背景アニメ
+	BGANIM,   1, bg0[2-3].png				//
+	ECHAR00,   0, kuchi02.txt				// 口パク透明
+	ECHAR00,   1, kuchi01.txt				// 口パク１
+[Init]
+	T0, BGPIC, 0,    0
+	T0, POS00, 614,248
+	T0, CHAR00, 0
+
+[Before]
+
+[Perform]
+	T0,BGPIC, 0, 0		//時間：命令：ＢＧの結びついている番号：フェード時間（０は瞬時）
+//	Txxx, BGANIM, NUM, Fade
+	T1.001, CHAR00, 0, 1
+	T17.001, BGANIM, 0, 4
+	T19.100, BGANIM, 1, 1
+	T19.700, CHAR00, 1, 0
+	T75.260, CHAR00, 0, 0
+	T80.500, CHAR00, 1, 0
+	T157.900, CHAR00, 0, 1
+	T161.001, BGANIM, 0, 1
+
+[After]

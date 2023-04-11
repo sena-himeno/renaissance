@@ -21,46 +21,6 @@ var musicEl = audio_player;
 // audio_player.src = "/page/SR/SR01/song.ogg"
 
 
-const song_info = {
-    1:{
-        "song_title_img_path":"/page/SR/SR01/img/songtitle.jpg",
-        "song_number":"SR01",
-        "song_name":" unknown ",
-        "song_key_info_path":"/page/SR/SR01/key.txt",
-        "song_key_sound_path":"/page/SR/SR01/Key",
-        "song_path":"/page/SR/SR01/song.ogg",
-        "song_img_path": "/page/SR/SR01/img"
-    },
-    2:{
-        "song_title_img_path":"/page/SR/SR01/img/songtitle.jpg",
-        "song_number":"SR01",
-        "song_name":" unknown 2 ",
-        "song_key_info_path":"/page/SR/SR01/key.txt",
-        "song_key_sound_path":"/page/SR/SR01/Key",
-        "song_path":"",
-        "song_img_path": "/page/SR/SR01/img"
-    },
-    3:{
-        "song_title_img_path":"/page/SR/SR01/img/songtitle.jpg",
-        "song_number":"SR01",
-        "song_name":" unknown 3 ",
-        "song_key_info_path":"/page/SR/SR01/key.txt",
-        "song_key_sound_path":"/page/SR/SR01/Key",
-        "song_path":"/page/SR/SR01/song.ogg",
-        "song_img_path": "/page/SR/SR01/img"
-    },
-    4:{
-        "song_title_img_path":"/page/SR/SR01/img/songtitle.jpg",
-        "song_number":"SR01",
-        "song_name":" unknown 3 ",
-        "song_key_info_path":"/page/SR/SR01/key.txt",
-        "song_key_sound_path":"/page/SR/SR01/Key",
-        "song_path":"/page/SR/SR01/song.ogg",
-        "song_img_path": "/page/SR/SR01/img"
-    }
-}
-
-
 class Play {
     constructor(key_info, musicEl, audio_player) {
         this.key_info = key_info;
@@ -94,7 +54,7 @@ class Play {
     }
     async play_main() {
         let interval = setInterval(() => {
-            if (musicEl.paused) {
+            if (audio_player.paused) {
                 this.end()
                 clearInterval(interval)
             }
@@ -128,7 +88,7 @@ class Play {
 }
 
 class Key_Sound {
-    constructor(key_info, outputSoundEl, audio_player, musicEl) {
+    constructor(key_info, outputSoundEl, audio_player, musicEl,key_soung_path) {
         this.key_info = key_info;
         this.outputSoundEl = outputSoundEl;
         this.audio_player = audio_player;
@@ -138,6 +98,7 @@ class Key_Sound {
         this.keyPressedTime;
         this.keyPressed;
         this.currentTime;
+        this.key_soung_path = key_soung_path;
 
     }
     init() {
@@ -148,7 +109,7 @@ class Key_Sound {
     run() {
         let interval = setInterval(() => {
 
-            if (musicEl.paused) {
+            if (audio_player.paused) {
                 clearInterval(interval)
             }
             document.onkeyup = (event) => {
@@ -160,7 +121,7 @@ class Key_Sound {
     }
     key_sound() {
         outputSoundEl.load()
-        outputSoundEl.setAttribute("src", "./SR01/Key/"+this.sound_name+".ogg")
+        outputSoundEl.setAttribute("src", this.key_soung_path+this.sound_name+".ogg")
         outputSoundEl.play();
     }
     sync_key_sound() {
@@ -180,97 +141,30 @@ class Key_Sound {
 
 }
 
-class Select_Soung{
-    constructor(song_info){
-        this.song_info = song_info;
-        this.cur_indext
-        this.song_info_length
-        this.txt_path
-        this.song_path
-    }
-    init(){
-        this.cur_index = 1;
-        this.song_info_length = this.get_song_info_length()
-        prev_song.style.display="none";
-        this.txt_path = this.song_info[this.cur_index].song_key_info_path;
-        this.song_path = this.song_info[this.cur_index].song_path;
-    }
-    get_song_info_length(){
-        var length = 0;
-        for(var i in this.song_info){
-            length++
-        }
-        return length;
-    }
-    change_song_info(){
-        // clog(txt_path)
-        clog( "cur_index " + this.cur_index + " and length " + this.song_info_length)
-        console.log(this.cur_index + " " + this.song_info[this.cur_index].song_name)
-        this.txt_path  = this.song_info[this.cur_index].song_key_info_path;
-        song_img.src = this.song_info[this.cur_index].song_title_img_path;
-        this.song_path = this.song_info[this.cur_index].song_path;
-    }
-    rule(){
-        if(this.cur_index <= 1){
-            prev_song.style.display="none";
-        }else{
-            prev_song.style.display="block";
-        }
-        if(this.cur_index >= this.song_info_length){
-            
-            next_song.style.display="none";
-        }else{
-            next_song.style.display="block";
-        }
-    }
-    async run(){
-        prev_song.onclick = () => {
-            this.cur_index--;
-            this.rule();
-            this.change_song_info();
-        }
-        next_song.onclick = () => {
-            this.cur_index++;
-            this.rule();
-            this.change_song_info();
-
-        }
-        this.change_song_info();
-    }
-    get_txt_path(){
-        clog(this.txt_path)
-        return this.txt_path;
-    }
-    get_song_path(){
-        clog(this.song_path)
-        return this.song_path;
-    }
-
-    
-}
-
 async function main() {
-    
-    var song = new Select_Soung(song_info);
-    song.init();
-    song.run();
 
-    luncher.onclick = async() => {
-        txt_path = song.get_txt_path();
-        audio_player.src = song.get_song_path();
-        let key_info = await txt_to_json(txt_path)
-        var player = new Play(key_info, musicEl, audio_player);
-        player.run();
-        var key_sound_controler = new Key_Sound(key_info, outputSoundEl, audio_player, musicEl)
-        key_sound_controler.init();
-        key_sound_controler.run();
         
-    }   
     window.addEventListener("load",function(){
         draw_line(ctx, 30, 10);
-    })
-}
-
+        var song = new Select_Soung(song_info);
+        song.init();
+        song.run();
+        
+        luncher.onclick = async() => {
+            let key_soung_path = song.get_key_soung_path();
+            clog(key_soung_path)
+            txt_path = song.get_txt_path();
+            audio_player.src = song.get_song_path();
+            let key_info = await txt_to_json(txt_path)
+            var player = new Play(key_info, musicEl, audio_player);
+            player.run();
+            var key_sound_controler = new Key_Sound(key_info, outputSoundEl, audio_player, musicEl,key_soung_path)
+            key_sound_controler.init();
+            key_sound_controler.run();
+        }
+        })
+}   
+    
 async function txt_to_json(txt_path) {
     let result = [];
     let text = await fetch(txt_path)

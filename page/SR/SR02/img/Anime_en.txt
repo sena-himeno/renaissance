@@ -1,0 +1,37 @@
+[Load]
+	BGPIC,   0, songbg_en.png
+	BGPIC,   1, 01.png
+	BGPIC,   2, 02.png
+	BGPIC,   3, 03.png
+	BGPIC,   4, 04.png
+	BGPIC,   5, 05.png
+	BGPIC,   6, 06.png
+	BGPIC,   7, 07.png
+	BGPIC,   8, 08.png
+	BGPIC,   9, 09.png
+	BGPIC,  10, 10.png
+	BGPIC,  11, 11.png
+	BGPIC,  12, 12.png
+	BGPIC,  13, 13.png
+
+[Init]
+	T0, BGPIC, 0,    0
+[Before]
+[Perform]
+	T00.000, BGPIC, 0, 0
+	T19.999, BGPIC, 12, 3
+	T29.999, BGPIC, 4, 3
+	T45.416, BGPIC, 10, 3
+	T58.749, BGPIC, 9, 3
+	T73.359, BGPIC, 3, 3
+	T88.630, BGPIC, 6, 3
+	T103.333, BGPIC, 7, 3
+	T113.333, BGPIC, 11, 3
+	T130.000, BGPIC, 5, 3
+	T143.730, BGPIC, 2, 3
+	T156.666, BGPIC, 8, 3
+	T171.100, BGPIC, 1, 3
+	T179.999, BGPIC, 13, 3
+	T185.694, BGPIC, 0, 3
+
+[After]

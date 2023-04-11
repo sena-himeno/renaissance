@@ -1,0 +1,13 @@
+// ImageFile, X, Y, Loop
+Kuchi01.bmp, 50, 34, ON
+// Pattern, Time
+0, S266
+1, S266
+2, S266
+3, S266
+4, S266
+5, S266
+6, S266
+7, S266
+8, S266
+9, S266
