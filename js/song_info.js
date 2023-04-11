@@ -1,54 +1,54 @@
 
 const song_info = {
-    1:{
-        "song_title_img_path":"/page/SR/SR01/img/songtitle.jpg",
-        "song_number":"SR01",
-        "song_name":" unknown ",
-        "song_key_info_path":"/page/SR/SR01/key.txt",
-        "song_key_sound_path":"./SR01/Key/",
-        "song_path":"/page/SR/SR01/song.ogg",
+    1: {
+        "song_title_img_path": "/page/SR/SR01/img/songtitle.jpg",
+        "song_number": "SR01",
+        "song_name": " unknown ",
+        "song_key_info_path": "/page/SR/SR01/key.txt",
+        "song_key_sound_path": "./SR01/Key/",
+        "song_path": "/page/SR/SR01/song.ogg",
         "song_img_path": "/page/SR/SR01/img"
     },
-    2:{
-        "song_title_img_path":"/page/SR/SR02/img/songtitle_zh.jpg",
-        "song_number":"SR02",
-        "song_name":" unknown 2 ",
-        "song_key_info_path":"/page/SR/SR02/key.txt",
-        "song_key_sound_path":"./SR02/Key/",
-        "song_path":"/page/SR/SR02/song.ogg",
+    2: {
+        "song_title_img_path": "/page/SR/SR02/img/songtitle_zh.jpg",
+        "song_number": "SR02",
+        "song_name": " unknown 2 ",
+        "song_key_info_path": "/page/SR/SR02/key.txt",
+        "song_key_sound_path": "./SR02/Key/",
+        "song_path": "/page/SR/SR02/song.ogg",
         "song_img_path": "/page/SR/SR02/img"
     },
-    3:{
-        "song_title_img_path":"/page/SR/SR03/img/songtitle_zh.jpg",
-        "song_number":"SR03",
-        "song_name":" unknown 3 ",
-        "song_key_info_path":"/page/SR/SR03/key.txt",
-        "song_key_sound_path":"./SR03/Key/",
-        "song_path":"/page/SR/SR03/song.ogg",
+    3: {
+        "song_title_img_path": "/page/SR/SR03/img/songtitle_zh.jpg",
+        "song_number": "SR03",
+        "song_name": " unknown 3 ",
+        "song_key_info_path": "/page/SR/SR03/key.txt",
+        "song_key_sound_path": "./SR03/Key/",
+        "song_path": "/page/SR/SR03/song.ogg",
         "song_img_path": "/page/SR/SR03/img"
     },
-    4:{
-        "song_title_img_path":"/page/SR/SR04/img/songtitle_zh.jpg",
-        "song_number":"SR04",
-        "song_name":" unknown 4 ",
-        "song_key_info_path":"/page/SR/SR04/key.txt",
-        "song_key_sound_path":"./SR04/Key/",
-        "song_path":"/page/SR/SR04/song.ogg",
+    4: {
+        "song_title_img_path": "/page/SR/SR04/img/songtitle_zh.jpg",
+        "song_number": "SR04",
+        "song_name": " unknown 4 ",
+        "song_key_info_path": "/page/SR/SR04/key.txt",
+        "song_key_sound_path": "./SR04/Key/",
+        "song_path": "/page/SR/SR04/song.ogg",
         "song_img_path": "/page/SR/SR04/img"
     },
-    5:{
-        "song_title_img_path":"/page/SR/SR05/img/songtitle_zh.jpg",
-        "song_number":"SR05",
-        "song_name":" unknown 5 ",
-        "song_key_info_path":"/page/SR/SR05/key.txt",
-        "song_key_sound_path":"./SR05/Key/",
-        "song_path":"/page/SR/SR05/song.ogg",
+    5: {
+        "song_title_img_path": "/page/SR/SR05/img/songtitle_zh.jpg",
+        "song_number": "SR05",
+        "song_name": " unknown 5 ",
+        "song_key_info_path": "/page/SR/SR05/key.txt",
+        "song_key_sound_path": "./SR05/Key/",
+        "song_path": "/page/SR/SR05/song.ogg",
         "song_img_path": "/page/SR/SR05/img"
     }
 }
 
-class Select_Soung{
-    constructor(song_info){
+class Select_Soung {
+    constructor(song_info) {
         this.song_info = song_info;
         this.cur_indext
         this.song_info_length
@@ -56,44 +56,44 @@ class Select_Soung{
         this.song_path
         this.key_soung_path
     }
-    init(){
+    init() {
         this.cur_index = 1;
         this.song_info_length = this.get_song_info_length()
-        prev_song.style.display="none";
+        prev_song.style.display = "none";
         this.txt_path = this.song_info[this.cur_index].song_key_info_path;
         this.song_path = this.song_info[this.cur_index].song_path;
         this.key_soung_path = this.song_info[this.cur_index].song_key_sound_path;
     }
-    get_song_info_length(){
+    get_song_info_length() {
         var length = 0;
-        for(var i in this.song_info){
+        for (var i in this.song_info) {
             length++
         }
         return length;
     }
-    change_song_info(){
+    change_song_info() {
         // clog(txt_path)
-        clog( "cur_index " + this.cur_index + " and length " + this.song_info_length)
+        clog("cur_index " + this.cur_index + " and length " + this.song_info_length)
         console.log(this.cur_index + " " + this.song_info[this.cur_index].song_name)
-        this.txt_path  = this.song_info[this.cur_index].song_key_info_path;
+        this.txt_path = this.song_info[this.cur_index].song_key_info_path;
         song_img.src = this.song_info[this.cur_index].song_title_img_path;
         this.song_path = this.song_info[this.cur_index].song_path;
         this.key_soung_path = this.song_info[this.cur_index].song_key_sound_path;
     }
-    rule(){
-        if(this.cur_index <= 1){
-            prev_song.style.display="none";
-        }else{
-            prev_song.style.display="block";
+    rule() {
+        if (this.cur_index <= 1) {
+            prev_song.style.display = "none";
+        } else {
+            prev_song.style.display = "block";
         }
-        if(this.cur_index >= this.song_info_length){
-            
-            next_song.style.display="none";
-        }else{
-            next_song.style.display="block";
+        if (this.cur_index >= this.song_info_length) {
+
+            next_song.style.display = "none";
+        } else {
+            next_song.style.display = "block";
         }
     }
-    async run(){
+    async run() {
         prev_song.onclick = () => {
             this.cur_index--;
             this.rule();
@@ -107,20 +107,20 @@ class Select_Soung{
         }
         this.change_song_info();
     }
-    get_txt_path(){
+    get_txt_path() {
         clog(this.txt_path)
         return this.txt_path;
     }
-    get_song_path(){
+    get_song_path() {
         clog(this.song_path)
         return this.song_path;
     }
-    get_key_soung_path(){
+    get_key_soung_path() {
         clog(this.key_soung_path)
         return this.key_soung_path;
     }
 
-    
+
 }
 
 

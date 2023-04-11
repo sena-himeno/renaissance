@@ -11,6 +11,7 @@ var next_count;
 
 var txt_path;
 
+var keyPressed;
 var sound_name;
 var count = 0;
 var print_content;
@@ -36,20 +37,19 @@ class Play {
         this.print_content = "";
         sound_name = this.key_info[0].sound_name;
 
-
     }
     run() {
         this.init();
         audio_player.play();
         this.play_main();
         luncher.style.display = "none";
-        select_Song.style.display="none";
-        img_box.style.display="block";
+        select_Song.style.display = "none";
+        img_box.style.display = "block";
     }
     end() {
         luncher.style.display = "block";
-        select_Song.style.display="block";
-        img_box.style.display="none";
+        select_Song.style.display = "block";
+        img_box.style.display = "none";
 
     }
     async play_main() {
@@ -59,22 +59,25 @@ class Play {
                 clearInterval(interval)
             }
             // print key
-            if(count < this.key_info.length){
+            if (count < this.key_info.length) {
                 this.print_key();
             }
             console.log(this.print_content)
             clog(count)
+            draw_flag(ctx, 100)
+            draw_flag(ctx, 50)
+
         }, 100)
     }
     print_key() {
         if (Math.floor(this.musicEl.currentTime * 10) / 10 + 4 == Math.floor(parseFloat(this.key_info[count].keytime) * 10) / 10) {
             console.log(this.key_info[count].keyPressed + " " + this.key_info[count].keyPressed == ';')
-            if(this.key_info[count].keyPressed == ';' || this.key_info[count].keyPressed == '<' || 
-            this.key_info[count].keyPressed == '>' || this.key_info[count].keyPressed == '?'){
+            if (this.key_info[count].keyPressed == ';' || this.key_info[count].keyPressed == '<' ||
+                this.key_info[count].keyPressed == '>' || this.key_info[count].keyPressed == '?') {
                 new Output_Key(this.key_info[count].keyPressed).draw(img_print_key)
             }
-            else{
-            new Output_Key(this.key_info[count].keyPressed.toUpperCase().charAt(0)).draw(img_print_key)
+            else {
+                new Output_Key(this.key_info[count].keyPressed.toUpperCase().charAt(0)).draw(img_print_key)
             }
             this.print_content += (this.key_info[count].keyPressed)
             count++;
@@ -88,7 +91,7 @@ class Play {
 }
 
 class Key_Sound {
-    constructor(key_info, outputSoundEl, audio_player, musicEl,key_soung_path) {
+    constructor(key_info, outputSoundEl, audio_player, musicEl, key_soung_path) {
         this.key_info = key_info;
         this.outputSoundEl = outputSoundEl;
         this.audio_player = audio_player;
@@ -114,26 +117,30 @@ class Key_Sound {
             }
             document.onkeyup = (event) => {
                 this.keyPressed = event.key;
+                keyPressed = this.keyPressed
                 this.key_sound()
+                // 输出结果
+
+
             }
             this.sync_key_sound()
         }, 100)
     }
     key_sound() {
         outputSoundEl.load()
-        outputSoundEl.setAttribute("src", this.key_soung_path+this.sound_name+".ogg")
+        outputSoundEl.setAttribute("src", this.key_soung_path + this.sound_name + ".ogg")
         outputSoundEl.play();
     }
     sync_key_sound() {
         this.currentTime = musicEl.currentTime
         this.keyPressedTime = Math.floor(this.currentTime * 10) / 10
-        if(count < this.key_info.length){
+        if (count < this.key_info.length) {
             if (this.keyPressedTime == parseFloat(this.key_info[this.next_count].keytime)) {
                 this.sound_name = this.key_info[this.next_count].sound_name;
                 this.next_count++;
                 clog("sync_key_sound,cur_key_sound_name " + sound_name);
                 this.key_sound()
-                
+
             }
         }
         clog("Next key: " + this.key_info[this.next_count].keyPressed + ", Time: " + this.key_info[this.next_count].keytime);
@@ -143,28 +150,36 @@ class Key_Sound {
 
 async function main() {
 
-        
-    window.addEventListener("load",function(){
+
+    window.addEventListener("load", function () {
         draw_line(ctx, 30, 10);
+        draw_flag(ctx, 100)
+        draw_flag(ctx, 50)
         var song = new Select_Soung(song_info);
+
         song.init();
         song.run();
-        
-        luncher.onclick = async() => {
+
+        luncher.onclick = async () => {
+
             let key_soung_path = song.get_key_soung_path();
-            clog(key_soung_path)
             txt_path = song.get_txt_path();
             audio_player.src = song.get_song_path();
             let key_info = await txt_to_json(txt_path)
             var player = new Play(key_info, musicEl, audio_player);
             player.run();
-            var key_sound_controler = new Key_Sound(key_info, outputSoundEl, audio_player, musicEl,key_soung_path)
+
+            var print_result = new Print_Result(key_info,musicEl);
+            print_result.init();
+            print_result.run();
+
+            var key_sound_controler = new Key_Sound(key_info, outputSoundEl, audio_player, musicEl, key_soung_path)
             key_sound_controler.init();
             key_sound_controler.run();
         }
-        })
-}   
-    
+    })
+}
+
 async function txt_to_json(txt_path) {
     let result = [];
     let text = await fetch(txt_path)
