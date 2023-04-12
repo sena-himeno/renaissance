@@ -1,5 +1,0 @@
-// ImageFile, X, Y, Loop
-kuchi00.bmp, 64, 96, ON
-// Pattern, Time
-0, S266
-1, S266
