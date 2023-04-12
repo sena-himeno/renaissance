@@ -33,16 +33,15 @@ class Print_Result {
         this.width = 20
         this.height = 20
         this.row = 10
-        this.col = 40
+        this.col = 45
         this.key_info = key_info
         this.cur_count
         this.cur_result
-        this.keyPressed
     }
     init() {
         this.cur_count = 0
         draw_result_ctx.clearRect(0, 0, draw_result.width, draw_result.height);
-        draw_result_table(draw_result_ctx, 20, 20, 10, 40)
+        draw_result_table(draw_result_ctx, 20, 20, 10, 45)
 
     }
     output() {
@@ -53,7 +52,7 @@ class Print_Result {
     }
     run() {
         let interval = setInterval(() => {
-            if (this.cur_count >= this.key_info.length) {
+            if (this.cur_count >= this.key_info.length -1) {
                 clearInterval(interval)
             }
             clog("---------------------------------------")
@@ -180,4 +179,51 @@ class Output_Key {
         }
         window.requestAnimationFrame(callbackFn)
     }
+    easy(key){
+        if(img_position_y_map[key] == 10){
+            
+        }
+        if(img_position_y_map[key] == 10){
+            
+        }
+        if(img_position_y_map[key] == 10){
+            
+        }
+        if(img_position_y_map[key] == 10){
+            
+        }
+        if(img_position_y_map[key] == 10){
+            
+        }
+        if(img_position_y_map[key] == 10){
+            
+        }
+        if(img_position_y_map[key] == 10){
+            
+        }
+        if(img_position_y_map[key] == 10){
+            
+        }
+        if(img_position_y_map[key] == 10){
+            
+        }
+        if(img_position_y_map[key] == 10){
+            
+        }
+    }
+    normal(){
+        var callbackFn = () => {
+            if (this.cur_x >= -35) {
+
+                ctx.clearRect(this.cur_x + 5, this.cur_y, this.print_size_x, this.print_size_y);
+                ctx.drawImage(img_key, this.img_position_x, this.img_position_y, this.img_size_x, this.img_size_y, this.cur_x, this.cur_y, this.print_size_x, this.print_size_y);
+                this.cur_x = this.cur_x + this.vx;
+                window.requestAnimationFrame(callbackFn)
+            }
+        }
+        window.requestAnimationFrame(callbackFn)
+
+
+    }
+
 }

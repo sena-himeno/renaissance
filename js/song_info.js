@@ -44,6 +44,51 @@ const song_info = {
         "song_key_sound_path": "./SR05/Key/",
         "song_path": "/page/SR/SR05/song.ogg",
         "song_img_path": "/page/SR/SR05/img"
+    },
+    6: {
+        "song_title_img_path": "/page/SR/SR06/img/songtitle_zh.jpg",
+        "song_number": "SR06",
+        "song_name": " unknown 6 ",
+        "song_key_info_path": "/page/SR/SR06/key.txt",
+        "song_key_sound_path": "./SR06/key/",
+        "song_path": "/page/SR/SR06/song.ogg",
+        "song_img_path": "/page/SR/SR06/img"
+    },
+    7: {
+        "song_title_img_path": "/page/SR/SR07/img/songtitle_zh.jpg",
+        "song_number": "SR07",
+        "song_name": " unknown 7 ",
+        "song_key_info_path": "/page/SR/SR07/key.txt",
+        "song_key_sound_path": "./SR07/key/",
+        "song_path": "/page/SR/SR07/song.ogg",
+        "song_img_path": "/page/SR/SR07/img"
+    },
+    8: {
+        "song_title_img_path": "/page/SR/SR08/img/songtitle_zh.jpg",
+        "song_number": "SR08",
+        "song_name": " unknown 8 ",
+        "song_key_info_path": "/page/SR/SR08/key.txt",
+        "song_key_sound_path": "./SR08/key/",
+        "song_path": "/page/SR/SR08/song.ogg",
+        "song_img_path": "/page/SR/SR08/img"
+    },
+    9: {
+        "song_title_img_path": "/page/SR/SR09/img/songtitle_zh.jpg",
+        "song_number": "SR09",
+        "song_name": " unknown 9 ",
+        "song_key_info_path": "/page/SR/SR09/key.txt",
+        "song_key_sound_path": "./SR09/key/",
+        "song_path": "/page/SR/SR09/song.ogg",
+        "song_img_path": "/page/SR/SR09/img"
+    },
+    10: {
+        "song_title_img_path": "/page/SR/SR10/img/songtitle_zh.jpg",
+        "song_number": "SR10",
+        "song_name": " unknown 10 ",
+        "song_key_info_path": "/page/SR/SR10/key.txt",
+        "song_key_sound_path": "./SR10/key/",
+        "song_path": "/page/SR/SR10/song.ogg",
+        "song_img_path": "/page/SR/SR10/img"
     }
 }
 
