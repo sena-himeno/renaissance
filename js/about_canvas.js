@@ -41,7 +41,7 @@ class Print_Result {
     init() {
         this.cur_count = 0
         draw_result_ctx.clearRect(0, 0, draw_result.width, draw_result.height);
-        draw_result_table(draw_result_ctx, 20, 20, 10, 45)
+        // draw_result_table(draw_result_ctx, 20, 20, 10, 45)
 
     }
     output() {
@@ -52,23 +52,23 @@ class Print_Result {
     }
     run() {
         let interval = setInterval(() => {
-            if (this.cur_count >= this.key_info.length -1) {
-                clearInterval(interval)
-            }
             clog("---------------------------------------")
             clog(this.cur_count)
             clog(keyPressed + " and " + this.key_info[this.cur_count].keyPressed)
             if (Math.floor(this.musicEl.currentTime * 10) / 10 == Math.floor(parseFloat(this.key_info[this.cur_count].keytime) * 10) / 10) {
                 this.cur_result = "red";
-                    if (keyPressed == this.key_info[this.cur_count].keyPressed) {
-                        clog("success")
-                        this.cur_result = "green";
-                    }
+                if (keyPressed == this.key_info[this.cur_count].keyPressed) {
+                    clog("success")
+                    this.cur_result = "green";
+                }
                 this.output()
                 this.cur_count++;
             }
             clog("---------------------------------------")
-
+            if (this.cur_count >= this.key_info.length -1) {
+                clearInterval(interval)
+            }
+            
         }, 100)
     }
 

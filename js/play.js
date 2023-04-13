@@ -45,6 +45,7 @@ class Play {
             console.log(this.print_content)
             clog(count)
             // draw_flag(ctx, 100)
+            // draw_flag(ctx, 65)
             draw_flag(ctx, 50)
 
         }, 100)
