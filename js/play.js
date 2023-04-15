@@ -1,4 +1,3 @@
-
 class Play {
     constructor(key_info, musicEl, audio_player) {
         this.key_info = key_info;
@@ -38,21 +37,18 @@ class Play {
                 this.end()
                 clearInterval(interval)
             }
-            // print key
             if (count < this.key_info.length) {
                 this.print_key();
             }
             console.log(this.print_content)
             clog(count)
-            // draw_flag(ctx, 100)
-            // draw_flag(ctx, 65)
-            draw_flag(ctx, 50)
+            draw_flag(ctx, 30)
 
         }, 100)
     }
     print_key() {
-        if (Math.floor(this.musicEl.currentTime * 10) / 10 + 4 == Math.floor(parseFloat(this.key_info[count].keytime) * 10) / 10) {
-            console.log(this.key_info[count].keyPressed + " " + this.key_info[count].keyPressed == ';')
+
+        if (Math.floor(this.musicEl.currentTime * 10) / 10 + 4== Math.floor(parseFloat(this.key_info[count].keytime) * 10) / 10) {
             if (this.key_info[count].keyPressed == ';' || this.key_info[count].keyPressed == '<' ||
                 this.key_info[count].keyPressed == '>' || this.key_info[count].keyPressed == '?') {
                 new Output_Key(this.key_info[count].keyPressed).draw(img_print_key)
@@ -66,6 +62,11 @@ class Play {
         else {
             this.print_content += '_';
         }
+        clog(Math.floor(musicEl.currentTime * 10) / 10)
+        clog(Math.floor(parseFloat(this.key_info[count].keytime) * 10) / 10)
+        clog(count)
+        clog(this.print_content)
+        clog(this.key_info.length)
     }
 
 

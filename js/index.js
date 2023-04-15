@@ -7,9 +7,10 @@ const prev_song = document.getElementById("prev_song");
 const next_song = document.getElementById("next_song");
 const remake_button = document.getElementById("remake_button");
 
+var song_info;
+var song_key_sound_postfix;
 var success_count;
 var next_count;
-
 var txt_path;
 
 var keyPressed;
@@ -20,16 +21,14 @@ var print_content;
 var audio_player = new Audio();
 var musicEl = audio_player;
 
-
-
-
-
 async function main() {
+
     window.addEventListener("load", function () {
         draw_line(ctx, 30, 10);
         // draw_flag(ctx, 100)
         // draw_flag(ctx, 50)
-        var song = new Select_Soung(SR_song_info);
+        console.log(song_info);
+        var song = new Select_Soung(song_info);
 
         song.init();
         song.run();
@@ -41,8 +40,11 @@ async function main() {
             audio_player.src = song.get_song_path();
             // key_info = await txt_to_json(txt_path)
             key_info = await txt_to_json_pro(txt_path)
+
+            
             var player = new Play(key_info, musicEl, audio_player);
             player.run();
+
             var print_result = new Print_Result(key_info,musicEl);
             print_result.init();
             print_result.run();
@@ -67,9 +69,5 @@ window.onload=function(){
         select_Song.style.display = "block";
         img_box.style.display = "none";
     }
-
-    // clog(txt_to_json("/page/SR/SR05/song.txt"))
-    // console.log(txt_to_json_pro("/page/SR/SR05/song.txt"))
-    
 }
 

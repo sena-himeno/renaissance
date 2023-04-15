@@ -33,14 +33,14 @@ class Key_Sound {
         }, 100)
     }
     key_sound() {
-        clog(  this.sound_name  + " type is "+ typeof(this.sound_name)  + " , length is " + this.sound_name.length);
+        // clog(  this.sound_name  + " type is "+ typeof(this.sound_name)  + " , length is " + this.sound_name.length);
         if(sound_name == 2){
             // this.outputSoundE2.load()
-            this.outputSoundE2.setAttribute("src", this.key_soung_path + this.sound_name[1] + ".ogg")
+            this.outputSoundE2.setAttribute("src", this.key_soung_path + this.sound_name[1] + song_key_sound_postfix)
             this.outputSoundE2.play();
         }
         // outputSoundEl.load()
-        outputSoundEl.setAttribute("src", this.key_soung_path + this.sound_name[0] + ".ogg")
+        outputSoundEl.setAttribute("src", this.key_soung_path + this.sound_name[0] + song_key_sound_postfix)
         outputSoundEl.play();
     }
     sync_key_sound() {
@@ -51,6 +51,8 @@ class Key_Sound {
                 this.sound_name = this.key_info[this.next_count].sound_name;
                 this.next_count++;
                 clog("sync_key_sound,cur_key_sound_name " + this.sound_name);
+
+                
                 this.key_sound()
 
             }

@@ -9,7 +9,7 @@ img_print_key.src = "/img/SongAlphabet.png"
 
 // part 2
 const draw_result = document.getElementById("draw_result");
-draw_result.width = 800;
+draw_result.width = 1000;
 draw_result.height = 200;
 
 var draw_result_ctx = draw_result.getContext('2d');
@@ -52,9 +52,9 @@ class Print_Result {
     }
     run() {
         let interval = setInterval(() => {
-            clog("---------------------------------------")
-            clog(this.cur_count)
-            clog(keyPressed + " and " + this.key_info[this.cur_count].keyPressed)
+            // clog("---------------------------------------")
+            // clog(this.cur_count)
+            // clog(keyPressed + " and " + this.key_info[this.cur_count].keyPressed)
             if (Math.floor(this.musicEl.currentTime * 10) / 10 == Math.floor(parseFloat(this.key_info[this.cur_count].keytime) * 10) / 10) {
                 this.cur_result = "red";
                 if (keyPressed == this.key_info[this.cur_count].keyPressed) {
@@ -64,7 +64,7 @@ class Print_Result {
                 this.output()
                 this.cur_count++;
             }
-            clog("---------------------------------------")
+            // clog("---------------------------------------")
             if (this.cur_count >= this.key_info.length -1) {
                 clearInterval(interval)
             }

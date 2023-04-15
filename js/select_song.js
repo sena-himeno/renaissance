@@ -7,6 +7,7 @@ class Select_Soung {
         this.txt_path
         this.song_path
         this.key_soung_path
+        this.song_key_sound_postfix
     }
     init() {
         this.cur_index = 1;
@@ -31,6 +32,8 @@ class Select_Soung {
         song_img.src = this.song_info[this.cur_index].song_title_img_path;
         this.song_path = this.song_info[this.cur_index].song_path;
         this.key_soung_path = this.song_info[this.cur_index].song_key_sound_path;
+        this.song_key_sound_postfix = this.song_info[this.cur_index].song_key_sound_postfix;;
+        song_key_sound_postfix = this.song_info[this.cur_index].song_key_sound_postfix;;
     }
     rule() {
         if (this.cur_index <= 1) {
@@ -70,6 +73,10 @@ class Select_Soung {
     get_key_soung_path() {
         clog(this.key_soung_path)
         return this.key_soung_path;
+    }
+    get_song_key_sound_postfix(){
+        clog(this.song_key_sound_postfix)
+        return this.song_key_sound_postfix;
     }
 
 
