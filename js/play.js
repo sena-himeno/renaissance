@@ -12,24 +12,37 @@ class Play {
         count = 0;
         this.print_content = "";
         sound_name = this.key_info[0].sound_name;
-
-    }
-    run() {
-        this.init();
-        audio_player.play();
-        this.play_main();
         luncher.style.display = "none";
         select_Song.style.display = "none";
         img_box.style.display = "block";
         remake_button.style.display = "none";
+        auto_key_sound.style.display = "none";
+        easy_model.style.display = "none";
+
+
+    }
+    run() {
+        clog(this.key_info.length)
+        this.init();
+        audio_player.play();
+        this.play_main();
     }
     end() {
         remake_button.style.display = "block";
+        successed_count.innerHTML = "successed_key_count : "+ success_count
+        failed_count.innerHTML = "failed_key_count : "+ (this.key_info.length - success_count)
+        successed_count.style.display = "block";
+        failed_count.style.display = "block";
+
     }
     remake(){
         luncher.style.display = "block";
         select_Song.style.display = "block";
+        auto_key_sound.style.display = "block";
+        easy_model.style.display = "block";
         img_box.style.display = "none";
+        successed_count.style.display = "none";
+        failed_count.style.display = "none";
     }
     async play_main() {
         let interval = setInterval(() => {
@@ -42,7 +55,7 @@ class Play {
             }
             console.log(this.print_content)
             clog(count)
-            draw_flag(ctx, 30)
+            draw_flag(ctx, 45)
 
         }, 100)
     }
@@ -51,10 +64,19 @@ class Play {
         if (Math.floor(this.musicEl.currentTime * 10) / 10 + 4== Math.floor(parseFloat(this.key_info[count].keytime) * 10) / 10) {
             if (this.key_info[count].keyPressed == ';' || this.key_info[count].keyPressed == '<' ||
                 this.key_info[count].keyPressed == '>' || this.key_info[count].keyPressed == '?') {
-                new Output_Key(this.key_info[count].keyPressed).draw(img_print_key)
+                    if(easy_model_value){
+                        new Output_Key(easy_model_mapper(this.key_info[count].keyPressed)).draw(img_print_key)
+                    }else{
+                        new Output_Key(this.key_info[count].keyPressed).draw(img_print_key)
+                    }
             }
             else {
-                new Output_Key(this.key_info[count].keyPressed.toUpperCase().charAt(0)).draw(img_print_key)
+                if(easy_model_value){
+                     new Output_Key(easy_model_mapper(this.key_info[count].keyPressed.toUpperCase().charAt(0))).draw(img_print_key)
+                }else{
+
+                    new Output_Key(this.key_info[count].keyPressed.toUpperCase().charAt(0)).draw(img_print_key)
+                }
             }
             this.print_content += (this.key_info[count].keyPressed)
             count++;

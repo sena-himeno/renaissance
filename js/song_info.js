@@ -1027,7 +1027,7 @@ const Part3_song_info = {
         "song_name": " unknown ",
         "song_key_info_path": "/page/Part3/SP22/song.txt",
         "song_key_sound_path": "/page/Part3/SP22/Key/",
-        "song_path": "/page/Part3/SP22/song1.ogg",
+        "song_path": "/page/Part3/SP22/song.ogg",
         "song_img_path": "/page/Part3/SP22/img",
         "song_key_sound_postfix": ".ogg"
     },

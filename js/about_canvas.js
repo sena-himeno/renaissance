@@ -54,12 +54,21 @@ class Print_Result {
         let interval = setInterval(() => {
             // clog("---------------------------------------")
             // clog(this.cur_count)
-            // clog(keyPressed + " and " + this.key_info[this.cur_count].keyPressed)
+            clog(keyPressed.toUpperCase() + " and " + this.key_info[this.cur_count].keyPressed.toUpperCase().charAt(0))
             if (Math.floor(this.musicEl.currentTime * 10) / 10 == Math.floor(parseFloat(this.key_info[this.cur_count].keytime) * 10) / 10) {
                 this.cur_result = "red";
-                if (keyPressed == this.key_info[this.cur_count].keyPressed) {
-                    clog("success")
-                    this.cur_result = "green";
+                if(easy_model_value){
+                    if(keyPressed.toUpperCase() == easy_model_mapper(this.key_info[this.cur_count].keyPressed.toUpperCase().charAt(0))){
+                        clog("success")
+                        this.cur_result = "green";
+                        success_count ++;        
+                    }
+                }else{
+                    if (keyPressed.toUpperCase() == this.key_info[this.cur_count].keyPressed.toUpperCase().charAt(0)) {
+                        clog("success")
+                        this.cur_result = "green";
+                        success_count ++;
+                    }
                 }
                 this.output()
                 this.cur_count++;
@@ -70,6 +79,9 @@ class Print_Result {
             }
             
         }, 100)
+    }
+    end(){
+        
     }
 
 }
@@ -105,6 +117,38 @@ function draw_flag(ctx, x,) {
     ctx.moveTo(x, 0);
     ctx.lineTo(x, ctx.canvas.height);
     ctx.stroke()
+}
+function easy_model_mapper(key){
+    if(img_position_y_map[key] == 10){
+        return 'A';
+    }
+    if(img_position_y_map[key] == 9){
+        return 'S';
+    }
+    if(img_position_y_map[key] == 8){
+        return 'D';
+    }
+    if(img_position_y_map[key] == 7){
+        return 'F';
+    }
+    if(img_position_y_map[key] == 6){
+        return 'G';
+    }
+    if(img_position_y_map[key] == 5){
+        return 'H';
+    }
+    if(img_position_y_map[key] == 4){
+        return 'J';
+    }
+    if(img_position_y_map[key] == 3){
+        return 'K';
+    }
+    if(img_position_y_map[key] == 2){
+        return 'L';
+    }
+    if(img_position_y_map[key] == 1){
+        return ';';
+    }
 }
 class Output_Key {
     constructor(key) {
@@ -179,38 +223,7 @@ class Output_Key {
         }
         window.requestAnimationFrame(callbackFn)
     }
-    easy(key){
-        if(img_position_y_map[key] == 10){
-            
-        }
-        if(img_position_y_map[key] == 10){
-            
-        }
-        if(img_position_y_map[key] == 10){
-            
-        }
-        if(img_position_y_map[key] == 10){
-            
-        }
-        if(img_position_y_map[key] == 10){
-            
-        }
-        if(img_position_y_map[key] == 10){
-            
-        }
-        if(img_position_y_map[key] == 10){
-            
-        }
-        if(img_position_y_map[key] == 10){
-            
-        }
-        if(img_position_y_map[key] == 10){
-            
-        }
-        if(img_position_y_map[key] == 10){
-            
-        }
-    }
+    
     normal(){
         var callbackFn = () => {
             if (this.cur_x >= -35) {

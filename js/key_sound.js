@@ -20,7 +20,7 @@ class Key_Sound {
     }
     run() {
         let interval = setInterval(() => {
-            keyPressed = null;
+            keyPressed = "";
             if (audio_player.paused) {
                 clearInterval(interval)
             }
@@ -52,8 +52,10 @@ class Key_Sound {
                 this.next_count++;
                 clog("sync_key_sound,cur_key_sound_name " + this.sound_name);
 
-                
-                this.key_sound()
+                if(auto_key_sound_value){
+
+                    this.key_sound()
+                }
 
             }
         }
@@ -103,6 +105,7 @@ async function txt_to_json_pro(txt_path) {
         let fields = [];
         let inlineIndex = 0;
         line.split(",").forEach(info => {
+
 
             if (inlineIndex <= 3) {
                 fields[inlineIndex] = info;
