@@ -18,6 +18,7 @@ class Play {
         remake_button.style.display = "none";
         auto_key_sound.style.display = "none";
         easy_model.style.display = "none";
+        floot_img.src = "/img/chr130.webp";
 
 
     }
@@ -33,6 +34,7 @@ class Play {
         failed_count.innerHTML = "failed_key_count : "+ (this.key_info.length - success_count)
         successed_count.style.display = "block";
         failed_count.style.display = "block";
+        floot_img.src = "/img/chr090.webp";
 
     }
     remake(){

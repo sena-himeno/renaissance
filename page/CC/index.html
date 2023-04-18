@@ -1,66 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body{
+            margin: 0px;
+            background-image: url(/img/Sora.webp);
+        }
+        button{
+            background-color: transparent;
+            border-style: none;
+            font-size: 20px;
+            color: green;
+
+        }
+        
+    </style>
 </head>
-
 <body>
-    <div>
-        <div id="header">
-        </div>
-        <h1>CC</h1>
-        <p>------------</p>
 
-        <p>------------</p>
-        <div>
-            <center>
-                <div id="select_Song" style="width:800px ; height: 400px; background-color: bisque; margin-top: 50px;">
-                    <button id="prev_song">prev_song</button>
-                    <img id="song_img" style="background-color: aqua; width: 50%; height: auto; ">
-                    <button id="next_song">next_song</button>
-                </div>    
-                <div id="img_box" style="width:800px ; height: 400px; background-color: bisque; margin-top: 50px; display: none;">
-                    <center>
-                            <canvas style="width: 800px; background-color: rgb(255, 255, 255);"
-                            id="draw_result"></canvas>
-                    </center>
-                    <button id="remake_button">重新选择</button>
+    <div id="page_main" style="height: 1250px; width: 100%; " >
+        <div style="height: 80%; width: 100%; " >
+
+            <div style="height: 100%;width: 20%;float: left; ">
+
+                <div style="height: 10%;width: 100%;">
+                    <div style="height: 100%; width: 50%; float: left;">
+                        <button style="width: 100%;height: 100%;font-size: 50px;">返回</button>
+                    </div>
+                    <div style="height: 100%; width: 50%; float: right;">
+                        <p style="text-align: center; font-size: 50px;margin-top: 25px;">CC</p>
+                    </div>
                 </div>
-            </center>
-        </div>
+                <div style="height: 45%;width: 100%;">
+                    <div style="height: 100%;width: 50%;float: right;">
 
-        <center>
-            <dixv style="position: relative; margin-top: 1%; background-color: blueviolet; width: 100%; height: 50px;">
-                <span>歌词</span>
-            </dixv>
-        </center>
-
-        <center>1
-
-            <div style="width: 10%;height:400px;background-color: cadetblue; float: left;">
-                <div id="song">
-                    <button id="game_start" value="" type="button" >game_start</button>
+                    </div>
+                    <button id="game_start" style="float: left; height: 40%; width: 50%;" type="button" >game_start</button>
+                    <button id="easy_model" style="float: left; height: 30%; width: 50%;"type="button" >easy_model</button>
+                    <button id="auto_key_sound" style="float: left; height: 30%; width: 50%;" type="button" >auto_key_sound</button>
                 </div>
-
+                <div style="height: 45%;width: 100%; ">
+                    <button id="successed_count" style="display: none; height: 50%;width: 100%;" value="" type="button" ></button>
+                    <button id="failed_count" style="display: none; height: 50%;width: 100%;" value="" type="button" ></button>
+                </div>
             </div>
-        </center>
 
-        <div style="width: 80%;height: 400px;background-color: antiquewhite;float:right ;">
-            <div>
-                <canvas style="width: 100%; background-color: rgb(255, 255, 255);"
+            <div style="height: 100%;width: 80%;float:right;">
+                <div style="height: 40%; width: 100%;">
+                        <div id="select_Song" style=" width:100% ; height: 100%; margin-top: 50px;">
+                            <button id="prev_song" style="height: 100%; width: 10%; float: left;">prev_song</button>
+                                <img id="song_img" style="margin-left: 20% ; width: 40%; height: 100%; ">
+                            <button id="next_song"style="height: 100%; width: 10%; float: right;">next_song</button>
+                        </div>    
+                        <div id="img_box" style="width:100% ; height: 100%; margin-top: 50px; display: none;">
+                                    <canvas style="width: 100%; height: 90%;"
+                                    id="draw_result"></canvas>
+                                    <center>
+
+                                        <button id="remake_button" style="width: 20%; height: 10%;">重新选择</button>
+                                    </center>
+                        </div>
+                </div>
+
+                <div style="height: 55%; width: 100%; ">
+                    <canvas style="width: 100%;height: 100%; "
                     id="draw_all"></canvas>
+                </div>
+
             </div>
-        </div>    
+
+        </div>
+
+        <div style="height: 20%; width: 100%;">
+            <div style="width: 10%;height: 20%; float: left;">
+                <img id="floot_img" src="/img/chr090.webp" alt="" style="width: 100%; height: auto;">
+            </div>
+            <div style="width: 10%;height: 20%; float: left;">
+                <img id="floot_img" src="/img/chr090.webp" alt="" style="width: 100%; height: auto;">
+            </div>
+            <div style="width: 10%;height: 20%; float: left;">
+                <img id="floot_img" src="/img/chr090.webp" alt="" style="width: 100%; height: auto;">
+            </div>
+            <div style="width: 10%;height: 20%; float: left;">
+                <img id="floot_img" src="/img/chr090.webp" alt="" style="width: 100%; height: auto;">
+            </div>
+            <div style="width: 10%;height: 20%; float: left;">
+                <img id="floot_img" src="/img/chr090.webp" alt="" style="width: 100%; height: auto;">
+            </div>
+            <div style="width: 10%;height: 20%; float: left;">
+                <img id="floot_img" src="/img/chr090.webp" alt="" style="width: 100%; height: auto;">
+            </div>
+            <div style="width: 10%;height: 20%; float: left;">
+                <img id="floot_img" src="/img/chr090.webp" alt="" style="width: 100%; height: auto;">
+            </div>
+            <div style="width: 10%;height: 20%; float: left;">
+                <img id="floot_img" src="/img/chr090.webp" alt="" style="width: 100%; height: auto;">
+            </div>
+            <div style="width: 10%;height: 20%; float: left;">
+                <img id="floot_img" src="/img/chr090.webp" alt="" style="width: 100%; height: auto;">
+            </div>
+            <div style="width: 10%;height: 20%; float: left;">
+                <img id="floot_img" src="/img/chr090.webp" alt="" style="width: 100%; height: auto;">
+            </div>
+
+        </div>
+
 
     </div>
     <audio id="key_output1"></audio>
     <audio id="key_output2"></audio>
 </body>
-
 </html>
 <script type="text/javascript" src="/js/index.js"></script>
 <script type="text/javascript" src="/js/about_canvas.js"></script>
@@ -68,7 +121,7 @@
 <script type="text/javascript" src="/js/play.js"></script>
 <script type="text/javascript" src="/js//select_song.js"></script>
 <script type="text/javascript" src="/js/song_info.js"></script>
+<script type="text/javascript" src="/js/onclick_enven.js"></script>
 <script>
-    var song_info = Part1_song_info;
-
+    var song_info = CC_song_info;
 </script>
