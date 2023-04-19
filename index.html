@@ -1,54 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-    <style>
-        body{
-            margin: 0;
-            background-color: gray;
-            /* background-image: url(/img/Sora.webp);  */
-            background-size: 100%;
-            background-repeat: no-repeat;
-            
+<style>
+    body {
+        margin: 0;
+        /* background-color: gray; */
+        background-image: url(/img/BG201_000.webp);
+        background-size: 100%;
+        background-repeat: no-repeat;
 
-        }
-        /* .header_link */
-        a{
-            width: 20%;
-            height: 100%;
-            font-size: 30px;
-            color: green;
-            float: left;
-            text-align: center;
-            backdrop-filter: blur(5px);
-        
-        }
-        #game_list{
-            margin-left: 50px;
-            float: left;
-            width: 14%;
-            height: 35%;
-            /* background-color: beige; */
-            margin-top: 100px;
-        }
-        button{
-            background-color: transparent;
-            border-style: none;
-            font-size: 50px;
-            color: green;
-            margin-left: 30%;
-        }
-        button:hover{
-            background-color: transparent;
-            font-size: 50px;
-            color: rgb(70, 0, 128);
-            margin-left: 30%;
-        }
-    </style>
+
+    }
+
+    /* .header_link */
+    a {
+        width: 20%;
+        height: 100%;
+        font-size: 30px;
+        color: rgb(91, 15, 126);
+        float: left;
+        text-align: center;
+        backdrop-filter: blur(5px);
+
+    }
+
+    #game_list {
+        margin-left: 50px;
+        float: left;
+        width: 14%;
+        height: 35%;
+        /* background-color: beige; */
+        margin-top: 100px;
+    }
+
+    button {
+        background-color: transparent;
+        border-style: none;
+        font-size: 50px;
+        color: rgba(185, 121, 3, 0.904);
+        margin-left: 30%;
+    }
+
+    button:hover {
+        background-color: transparent;
+        font-size: 50px;
+        margin-left: 30%;
+    }
+
+    #left_50 {
+        width: 50%;
+        height: 100%;
+        float: left;
+    }
+
+    #right_50 {
+        width: 50%;
+        height: 100%;
+        /* background-color: rgb(23, 156, 112); */
+        float: right;
+
+    }
+
+    #game_img {
+        width: 100%;
+        height: 100%;
+    }
+
+    #left_50:hover {
+        background-color: rgba(0, 0, 100, .4);
+    }
+
+    #right_50:hover {
+        background-color: rgba(0, 100, 100, .4);
+    }
+</style>
+
 <body>
     <div id="page_main" style="height: 1150px;width: 100%;">
 
@@ -68,13 +100,12 @@
 
         <div style="height: 90%; width: 100%;">
             <div id="main_div" style="height: 100%; width: 80%; margin-left: 10%; ">
-
                 <div id="game_list">
-                    <div id="game_img">
-                        <img src="/page/AC/AC.webp" style="width: 100%; height: auto;" alt="">
-                        <div id="left_50%">
+                    <div id="game_img" style="background-image: url(/page/AC/AC.webp);">
+                        <div id="left_50"
+                            onclick="window.location.href='https://downloads.khinsider.com/game-soundtracks/album/angelic-concert-vocal-collection' ">
                         </div>
-                        <div id="right_50%">
+                        <div id="right_50" onclick="window.location.href='https://vndb.org/v38'">
                         </div>
                     </div>
                     <div id="go">
@@ -82,11 +113,10 @@
                     </div>
                 </div>
                 <div id="game_list">
-                    <div id="game_img">
-                        <img src="/page/DP/DP.webp" style="width: 100%; height: auto;" alt="">
-                        <div id="left_50%">
+                    <div id="game_img" style="background-image: url(/page/DP/DP.webp);">
+                        <div id="left_50">
                         </div>
-                        <div id="right_50%">
+                        <div id="right_50" onclick="window.location.href='https://vndb.org/v674'">
                         </div>
                     </div>
                     <div id="go">
@@ -94,129 +124,118 @@
                     </div>
                 </div>
                 <div id="game_list">
-                    <div id="game_img">
-                        <img src="/page/SF/SF.webp" style="width: 100%; height: auto;" alt="">
-                        <div id="left_50%">
+                    <div id="game_img" style="background-image: url(/page/SF/SF.webp);">
+                        <div id="left_50"
+                            onclick="window.location.href='https://downloads.khinsider.com/game-soundtracks/album/solfege-vocal-collection'">
                         </div>
-                        <div id="right_50%">
+                        <div id="right_50" onclick="window.location.href='https://vndb.org/v2113'">
                         </div>
                     </div>
                     <div id="go">
-                            <button onclick="window.location.href='/page/SF/index.html'">SF</button>
+                        <button onclick="window.location.href='/page/SF/index.html'">SF</button>
                     </div>
                 </div>
                 <div id="game_list">
-                    <div id="game_img">
-                        <img src="/page/SR/SR.webp" style="width: 100%; height: auto;" alt="">
-                        <div id="left_50%">
+                    <div id="game_img" style="background-image: url(/page/SR/SR.webp);">
+                        <div id="left_50"
+                            onclick="window.location.href='https://downloads.khinsider.com/game-soundtracks/album/symphonic-rain-vocal-album-rainbow'">
                         </div>
-                        <div id="right_50%">
+                        <div id="right_50" onclick="window.location.href='https://vndb.org/v38'">
                         </div>
                     </div>
                     <div id="go">
-                                <button onclick="window.location.href='/page/SR/index.html'">SR</button>
+                        <button onclick="window.location.href='/page/SR/index.html'">SR</button>
                     </div>
                 </div>
                 <div id="game_list">
-                    <div id="game_img">
-                        <img src="/page/AS/AS.webp" style="width: 100%; height: auto;" alt="">
-                        <div id="left_50%">
+                    <div id="game_img" style="background-image: url(/page/AS/AS.webp);">
+                        <div id="left_50"
+                            onclick="window.location.href='https://downloads.khinsider.com/game-soundtracks/album/angelic-concert-angelic-serenade-dvd-a-newborn-love-song-original-soundtrack'">
                         </div>
-                        <div id="right_50%">
+                        <div id="right_50" onclick="window.location.href='https://vndb.org/v2112'">
                         </div>
                     </div>
                     <div id="go">
-                                <button onclick="window.location.href='/page/AS/index.html'">AS</button>
+                        <button onclick="window.location.href='/page/AS/index.html'">AS</button>
                     </div>
                 </div>
                 <div id="game_list">
-                    <div id="game_img">
-                        <img src="/page/AC/AC.webp" style="width: 100%; height: auto;" alt="">
-                        <div id="left_50%">
+                    <div id="game_img" style="background-image: url(/page/AC/AC.webp);">
+                        <div id="left_50">
                         </div>
-                        <div id="right_50%">
+                        <div id="right_50">
                         </div>
                     </div>
                     <div id="go">
-                                <button onclick="window.location.href='/page/AE/index.html'">AE</button>
+                        <button onclick="window.location.href='/page/AE/index.html'">AE</button>
                     </div>
                 </div>
                 <div id="game_list">
-                    <div id="game_img">
-                        <img src="/page/AS/AS.webp" style="width: 100%; height: auto;" alt="">
-                        <div id="left_50%">
+                    <div id="game_img" style="background-image: url(/page/AS/AS.webp);">
+                        <div id="left_50">
                         </div>
-                        <div id="right_50%">
+                        <div id="right_50">
                         </div>
                     </div>
                     <div id="go">
-                                <button onclick="window.location.href='/page/AF/index.html'">AF</button>
+                        <button onclick="window.location.href='/page/AF/index.html'">AF</button>
                     </div>
                 </div>
                 <div id="game_list">
-                    <div id="game_img">
-                        <img src="/page/CC/CC.webp" style="width: 100%; height: auto;" alt="">
-                        <div id="left_50%">
+                    <div id="game_img" style="background-image: url(/page/CC/CC.webp);">
+                        <div id="left_50">
                         </div>
-                        <div id="right_50%">
+                        <div id="right_50">
                         </div>
                     </div>
                     <div id="go">
-                                <button onclick="window.location.href='/page/CC/index.html'">CC</button>
+                        <button onclick="window.location.href='/page/CC/index.html'">CC</button>
                     </div>
                 </div>
                 <div id="game_list">
-                    <div id="game_img">
-                        <img src="/page/CC/CC.webp" style="width: 100%; height: auto;" alt="">
-                        <div id="left_50%">
+                    <div id="game_img" style="background-image: url(/page/CW/CW.webp);">
+                        <div id="left_50">
                         </div>
-                        <div id="right_50%">
+                        <div id="right_50">
                         </div>
                     </div>
                     <div id="go">
-                                <button onclick="window.location.href='/page/CC/index.html'">CW</button>
+                        <button onclick="window.location.href='/page/CC/index.html'">CW</button>
                     </div>
                 </div>
                 <div id="game_list">
-                    <div id="game_img">
-                        <img src="/page/Part1/Part1.webp" style="width: 100%; height: auto;" alt="">
-                        <div id="left_50%">
+                    <div id="game_img" style="background-image: url(/page/Part1/Part1.webp);">
+                        <div id="left_50">
                         </div>
-                        <div id="right_50%">
+                        <div id="right_50">
                         </div>
                     </div>
                     <div id="go">
-                                <button onclick="window.location.href='/page/Part1/index.html'">Part1</button>
+                        <button onclick="window.location.href='/page/Part1/index.html'">Part1</button>
                     </div>
                 </div>
                 <div id="game_list">
-                    <div id="game_img">
-                        <img src="/page/Part2/Part2.webp" style="width: 100%; height: auto;" alt="">
-                        <div id="left_50%">
+                    <div id="game_img" style="background-image: url(/page/Part2/Part2.webp);">
+                        <div id="left_50">
                         </div>
-                        <div id="right_50%">
+                        <div id="right_50">
                         </div>
                     </div>
                     <div id="go">
-                                <button onclick="window.location.href='/page/Part2/index.html'">Part2</button>
+                        <button onclick="window.location.href='/page/Part2/index.html'">Part2</button>
                     </div>
                 </div>
                 <div id="game_list">
-                    <div id="game_img">
-                        <img src="/page/Part3/Part3.webp" style="width: 100%; height: auto;" alt="">
-                        <div id="left_50%">
+                    <div id="game_img" style="background-image: url(/page/Part3/Part3.webp);">
+                        <div id="left_50">
                         </div>
-                        <div id="right_50%">
+                        <div id="right_50">
                         </div>
                     </div>
                     <div id="go">
-                                <button onclick="window.location.href='/page/Part3/index.html'">Part3</button>
+                        <button onclick="window.location.href='/page/Part3/index.html'">Part3</button>
                     </div>
                 </div>
-
-
-
-
             </div>
 
 
@@ -225,4 +244,5 @@
 
     </div>
 </body>
+
 </html>
