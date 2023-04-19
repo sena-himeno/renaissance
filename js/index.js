@@ -11,6 +11,7 @@ const auto_key_sound = document.getElementById("auto_key_sound");
 const successed_count = document.getElementById("successed_count");
 const failed_count = document.getElementById("failed_count");
 const floot_img =  document.getElementById("floot_img")
+const home_button = document.getElementById("home_button");
 
 var song_info;
 var song_key_sound_postfix;

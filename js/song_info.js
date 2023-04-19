@@ -1285,3 +1285,75 @@ const SF_song_info = {
         "song_key_sound_postfix": ".ogg"
     }
 }
+const AS_song_info = {
+    1: {
+        "song_title_img_path": "/page/AS/AS01/img/songtitle.jpg",
+        "song_number": "AS01",
+        "song_name": " unknown ",
+        "song_key_info_path": "/page/AS/AS01/song.txt",
+        "song_key_sound_path": "/page/AS/AS01/Key/",
+        "song_path": "/page/AS/AS01/SONG.ogg",
+        "song_img_path": "/page/AS/AS01/img",
+        "song_key_sound_postfix": ".ogg"
+    },
+    2: {
+        "song_title_img_path": "/page/AS/AS06/img/songtitle.jpg",
+        "song_number": "AS06",
+        "song_name": " unknown 6 ",
+        "song_key_info_path": "/page/AS/AS06/song.txt",
+        "song_key_sound_path": "./AS06/Key/",
+        "song_path": "/page/AS/AS06/SONG.ogg",
+        "song_img_path": "/page/AS/AS06/img",
+        "song_key_sound_postfix": ".ogg"
+    },
+    3: {
+        "song_title_img_path": "/page/AS/AS07/img/songtitle.jpg",
+        "song_number": "AS07",
+        "song_name": " unknown 7 ",
+        "song_key_info_path": "/page/AS/AS07/song.txt",
+        "song_key_sound_path": "./AS07/Key/",
+        "song_path": "/page/AS/AS07/SONG.ogg",
+        "song_img_path": "/page/AS/AS07/img",
+        "song_key_sound_postfix": ".ogg"
+    },
+    4: {
+        "song_title_img_path": "/page/AS/AS10/img/songtitle.jpg",
+        "song_number": "AS10",
+        "song_name": " unknown 10 ",
+        "song_key_info_path": "/page/AS/AS10/song.txt",
+        "song_key_sound_path": "./AS10/Key/",
+        "song_path": "/page/AS/AS10/SONG.ogg",
+        "song_img_path": "/page/AS/AS10/img",
+        "song_key_sound_postfix": ".ogg"
+    },
+    5: {
+        "song_title_img_path": "/page/AS/AS11/img/songtitle.jpg",
+        "song_number": "AS11",
+        "song_name": " unknown 11 ",
+        "song_key_info_path": "/page/AS/AS11/song.txt",
+        "song_key_sound_path": "./AS11/Key/",
+        "song_path": "/page/AS/AS11/SONG.ogg",
+        "song_img_path": "/page/AS/AS11/img",
+        "song_key_sound_postfix": ".ogg"
+    },
+    6: {
+        "song_title_img_path": "/page/AS/AS12/img/songtitle.jpg",
+        "song_number": "AS12",
+        "song_name": " unknown 12 ",
+        "song_key_info_path": "/page/AS/AS12/song.txt",
+        "song_key_sound_path": "./AS12/Key/",
+        "song_path": "/page/AS/AS12/SONG.ogg",
+        "song_img_path": "/page/AS/AS12/img",
+        "song_key_sound_postfix": ".ogg"
+    },
+    7: {
+        "song_title_img_path": "/page/AS/AS13/img/songtitle.jpg",
+        "song_number": "AS13",
+        "song_name": " unknown 13 ",
+        "song_key_info_path": "/page/AS/AS13/song.txt",
+        "song_key_sound_path": "./AS13/Key/",
+        "song_path": "/page/AS/AS13/SONG.ogg",
+        "song_img_path": "/page/AS/AS13/img",
+        "song_key_sound_postfix": ".ogg"
+    }
+}

@@ -41,6 +41,9 @@ window.onload=function(){
         }
 
     }
+    home_button.onclick = () => {
+        window.location.href = '/index.html'
+    }
 
 }
 

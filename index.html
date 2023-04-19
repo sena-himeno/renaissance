@@ -1,93 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style>
-    .game_list {
-        height: 300px;
-        width: 200px;
-        background-color: aquamarine;
-        float: left;
-        margin-right: 30px;
-        z-index: -1;
-    }
+    <style>
+        body{
+            margin: 0;
+            background-color: gray;
+            /* background-image: url(/img/Sora.webp);  */
+            background-size: 100%;
+            background-repeat: no-repeat;
+            
 
-    .mainly {
-        width: 80%;
-        align-items: center;
-        height: 800px;
-        background-color: aqua;
-
-    }
-
-    .img_left {
-        width: 50%;
-        float: left;
-        height: 200px;
-        z-index: 999;
-        position: absolute;
-        left: 0;
-    }
-
-    .img_left:hover {
-        background-color: gray;
-    }
-
-    .img_right:hover {
-        background-color: aqua;
-    }
-
-    .img_right {
-        position: absolute;
-        width: 49%;
-        height: 200px;
-        float: right;
-        left: 50%;
-        z-index: 999;
-    }
-</style>
-
+        }
+        /* .header_link */
+        a{
+            width: 20%;
+            height: 100%;
+            font-size: 30px;
+            color: green;
+            float: left;
+            text-align: center;
+            backdrop-filter: blur(5px);
+        
+        }
+        #game_list{
+            margin-left: 50px;
+            float: left;
+            width: 14%;
+            height: 35%;
+            /* background-color: beige; */
+            margin-top: 100px;
+        }
+        button{
+            background-color: transparent;
+            border-style: none;
+            font-size: 50px;
+            color: green;
+            margin-left: 30%;
+        }
+        button:hover{
+            background-color: transparent;
+            font-size: 50px;
+            color: rgb(70, 0, 128);
+            margin-left: 30%;
+        }
+    </style>
 <body>
-    <div>
-        <center>
-            <a href="/page/main_page/about_website.html">一些说明</a>
-        </center>
-        <div>
+    <div id="page_main" style="height: 1150px;width: 100%;">
+
+        <div style="height: 10%; width: 100% ;">
+            <div style="height: 50%; width: 100%;">
+                <p style="font-size: 30px;text-align: center;">文艺复兴</p>
+            </div>
+
+            <div style="height: 50%; width: 100%;">
+                <a id="header_link" href="https://github.com/sena-himeno/renaissance">github</a>
+                <a id="header_link" href="https://galgamer.eu.org/">顶级期刊</a>
+                <a id="header_link" href="https://discord.com/invite/6RaztntJ2N">discord</a>
+                <a id="header_link" href="https://t.me/Galgamer_channel">telegram</a>
+                <a href="/page/main_page/about_website.html">about website</a>
+            </div>
         </div>
 
-        <div id="mainly">
-            <center>
+        <div style="height: 90%; width: 100%;">
+            <div id="main_div" style="height: 100%; width: 80%; margin-left: 10%; ">
 
-                <div>--------------------------------------</div>
                 <div id="game_list">
-                <a href="/page/SR/index.html">SR</a>
-                <div id="game_img">
-                    <div id="img_left">
+                    <div id="game_img">
+                        <img src="/page/AC/AC.webp" style="width: 100%; height: auto;" alt="">
+                        <div id="left_50%">
+                        </div>
+                        <div id="right_50%">
+                        </div>
                     </div>
-                    <div id="img_right">
-                        
+                    <div id="go">
+                        <button onclick="window.location.href='/page/AC/index.html'">AC</button>
                     </div>
                 </div>
-                <div>--------------------------------------</div>
-            </center>
+                <div id="game_list">
+                    <div id="game_img">
+                        <img src="/page/DP/DP.webp" style="width: 100%; height: auto;" alt="">
+                        <div id="left_50%">
+                        </div>
+                        <div id="right_50%">
+                        </div>
+                    </div>
+                    <div id="go">
+                        <button onclick="window.location.href='/page/DP/index.html'">DP</button>
+                    </div>
+                </div>
+                <div id="game_list">
+                    <div id="game_img">
+                        <img src="/page/SF/SF.webp" style="width: 100%; height: auto;" alt="">
+                        <div id="left_50%">
+                        </div>
+                        <div id="right_50%">
+                        </div>
+                    </div>
+                    <div id="go">
+                            <button onclick="window.location.href='/page/SF/index.html'">SF</button>
+                    </div>
+                </div>
+                <div id="game_list">
+                    <div id="game_img">
+                        <img src="/page/SR/SR.webp" style="width: 100%; height: auto;" alt="">
+                        <div id="left_50%">
+                        </div>
+                        <div id="right_50%">
+                        </div>
+                    </div>
+                    <div id="go">
+                                <button onclick="window.location.href='/page/SR/index.html'">SR</button>
+                    </div>
+                </div>
+                <div id="game_list">
+                    <div id="game_img">
+                        <img src="/page/AS/AS.webp" style="width: 100%; height: auto;" alt="">
+                        <div id="left_50%">
+                        </div>
+                        <div id="right_50%">
+                        </div>
+                    </div>
+                    <div id="go">
+                                <button onclick="window.location.href='/page/AS/index.html'">AS</button>
+                    </div>
+                </div>
+                <div id="game_list">
+                    <div id="game_img">
+                        <img src="/page/AC/AC.webp" style="width: 100%; height: auto;" alt="">
+                        <div id="left_50%">
+                        </div>
+                        <div id="right_50%">
+                        </div>
+                    </div>
+                    <div id="go">
+                                <button onclick="window.location.href='/page/AE/index.html'">AE</button>
+                    </div>
+                </div>
+                <div id="game_list">
+                    <div id="game_img">
+                        <img src="/page/AS/AS.webp" style="width: 100%; height: auto;" alt="">
+                        <div id="left_50%">
+                        </div>
+                        <div id="right_50%">
+                        </div>
+                    </div>
+                    <div id="go">
+                                <button onclick="window.location.href='/page/AF/index.html'">AF</button>
+                    </div>
+                </div>
+                <div id="game_list">
+                    <div id="game_img">
+                        <img src="/page/CC/CC.webp" style="width: 100%; height: auto;" alt="">
+                        <div id="left_50%">
+                        </div>
+                        <div id="right_50%">
+                        </div>
+                    </div>
+                    <div id="go">
+                                <button onclick="window.location.href='/page/CC/index.html'">CC</button>
+                    </div>
+                </div>
+                <div id="game_list">
+                    <div id="game_img">
+                        <img src="/page/CC/CC.webp" style="width: 100%; height: auto;" alt="">
+                        <div id="left_50%">
+                        </div>
+                        <div id="right_50%">
+                        </div>
+                    </div>
+                    <div id="go">
+                                <button onclick="window.location.href='/page/CC/index.html'">CW</button>
+                    </div>
+                </div>
+                <div id="game_list">
+                    <div id="game_img">
+                        <img src="/page/Part1/Part1.webp" style="width: 100%; height: auto;" alt="">
+                        <div id="left_50%">
+                        </div>
+                        <div id="right_50%">
+                        </div>
+                    </div>
+                    <div id="go">
+                                <button onclick="window.location.href='/page/Part1/index.html'">Part1</button>
+                    </div>
+                </div>
+                <div id="game_list">
+                    <div id="game_img">
+                        <img src="/page/Part2/Part2.webp" style="width: 100%; height: auto;" alt="">
+                        <div id="left_50%">
+                        </div>
+                        <div id="right_50%">
+                        </div>
+                    </div>
+                    <div id="go">
+                                <button onclick="window.location.href='/page/Part2/index.html'">Part2</button>
+                    </div>
+                </div>
+                <div id="game_list">
+                    <div id="game_img">
+                        <img src="/page/Part3/Part3.webp" style="width: 100%; height: auto;" alt="">
+                        <div id="left_50%">
+                        </div>
+                        <div id="right_50%">
+                        </div>
+                    </div>
+                    <div id="go">
+                                <button onclick="window.location.href='/page/Part3/index.html'">Part3</button>
+                    </div>
+                </div>
+
+
+
+
             </div>
 
 
         </div>
 
 
-        <div>
-
-
-
-        </div>
-
     </div>
 </body>
-
 </html>
