@@ -1,4 +1,4 @@
-const canvas_main = document.getElementById("draw_all");
+
 canvas_main.width = 1200;
 canvas_main.height = 300;
 var ctx = canvas_main.getContext('2d');
@@ -8,7 +8,6 @@ img_print_key.src = "/img/SongAlphabet.png"
 
 
 // part 2
-const draw_result = document.getElementById("draw_result");
 draw_result.width = 1000;
 draw_result.height = 200;
 

@@ -1,0 +1,11 @@
+#launcher, #select_Song, #auto_key_sound, #easy_model, #img_box {
+    display: none;
+}
+
+#remake_button {
+    display: block;
+}
+
+#successed_count, #failed_count {
+    display: block;
+}

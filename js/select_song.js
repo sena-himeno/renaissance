@@ -33,7 +33,8 @@ class Select_Soung {
         this.song_path = this.song_info[this.cur_index].song_path;
         this.key_soung_path = this.song_info[this.cur_index].song_key_sound_path;
         this.song_key_sound_postfix = this.song_info[this.cur_index].song_key_sound_postfix;;
-        song_key_sound_postfix = this.song_info[this.cur_index].song_key_sound_postfix;;
+        song_key_sound_postfix = this.song_info[this.cur_index].song_key_sound_postfix;
+        
     }
     rule() {
         if (this.cur_index <= 1) {
