@@ -1,5 +1,5 @@
 class Key_Sound {
-    constructor(key_info, outputSoundEl,outputSoundE2, audio_player, musicEl, key_soung_path) {
+    constructor(key_info, outputSoundEl,outputSoundE2, audio_player, musicEl, key_song_path) {
         this.key_info = key_info;
         this.outputSoundEl = outputSoundEl;
         this.outputSoundE2 = outputSoundE2;
@@ -10,7 +10,7 @@ class Key_Sound {
         this.keyPressedTime;
         this.keyPressed;
         this.currentTime;
-        this.key_soung_path = key_soung_path;
+        this.key_song_path = key_song_path;
 
     }
     init() {
@@ -40,7 +40,7 @@ class Key_Sound {
             this.outputSoundE2.play();
         }
         // outputSoundEl.load()
-        outputSoundEl.setAttribute("src", this.key_soung_path + this.sound_name[0] + song_key_sound_postfix)
+        outputSoundEl.setAttribute("src", this.key_song_path + this.sound_name[0] + song_key_sound_postfix)
         outputSoundEl.play();
     }
     sync_key_sound() {
