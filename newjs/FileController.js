@@ -8,6 +8,8 @@ class FileController {
     }
 
 
+
+
     async init() {
         this.audioSegments = [];
         this.key_song_info = await FileController.textToJsonKeyInfo(this.path);
@@ -18,37 +20,52 @@ class FileController {
 
     async preloadAudio(key_song_path, song_key_sound_postfix) {
         console.log(this.key_song_info);
-        const audioSegments = [];
+        const audio_sequence = [];
+
         for (const info of this.key_song_info) {
-            console.log(`loading resources： ${audioSegments.length}  /  ${this.key_song_info_length} `)
-            const sound_name = info.sound_name;
-            let audio = new Audio();
-            await new Promise(async (resolve) => {
-                const src = key_song_path + sound_name + song_key_sound_postfix;
-                audio.src = src;
-                audio.addEventListener('loadeddata', () => {
-                    audioSegments.push(audio);
-                    resolve();
-                });
-                audio.addEventListener('error', (event) => {
-                    console.error('audio resource error', event);
-                    audioSegments.push(new Audio());
-                    resolve();
-                });
+            console.log(info);
+
+            const audio_array = [];
+
+            for (let index in info.sound_name) {
+                const sound_name = info.sound_name[index];
+                const audio = new Audio();
+                    const src = key_song_path + sound_name + song_key_sound_postfix;
 
                 try {
                     await audio.load();
+                    audio.src = src;
+                    await new Promise((resolve) => {
+                        audio.addEventListener('loadeddata', () => {
+                            audio_array.push(audio);
+                            console.log(`loading resources: ${audio_sequence.length} / ${this.key_song_info_length}`);
+                            resolve();
+                        });
+                        audio.addEventListener('error', (event) => {
+                            console.error('audio resource error', event);
+                            console.log(`audio loading exception: ${src}`);
+                            // audio_array.push(new Audio());
+                            resolve();
+                        });
+                    });
                 } catch (error) {
                     console.log('audio load error', error);
-                    console.log(`audio loading exception：${src}`);
-                    resolve();
+                    console.log(`audio loading exception: ${src}`);
+                    audio_array.push(new Audio());
                 }
-            });
+            }
+
+            audio_sequence.push(audio_array);
         }
-        console.log(audioSegments);
-        this.audioSegments = audioSegments;
-        return audioSegments;
+
+        console.log(audio_sequence);
+        console.log("--------------------------------");
+        this.audioSegments = audio_sequence;
+        return audio_sequence;
     }
+
+
+
 
 
     loadSong(key_song_path,song_name,song_key_sound_postfix){
@@ -83,12 +100,15 @@ class FileController {
         const result_key_info = []
         const text = await fetch(txt_path).then(response => response.text());
         let prev_key_time = null;
-        let key_sound_name ;
+        let key_sound_name  = [];
+        let count = 0;
         text.split("\n").forEach(line => {
             let [_, key_time, sound_name, keyPressed] = line.split(",");
             key_time = String(Math.floor(parseFloat(key_time) * 10) / 10);
             if (prev_key_time === key_time) {
-                key_sound_name.push(sound_name);
+                console.log(`${prev_key_time} and ${key_time}`)
+                console.log(result_key_info)
+                result_key_info[count-1].sound_name.push(sound_name);
             } else {
                 result_key_info.push({
                     key_time: key_time,
@@ -97,7 +117,9 @@ class FileController {
                 });
                 prev_key_time = key_time;
                 key_sound_name = [sound_name];
+                count++;
             }
+            key_sound_name = [];
         });
 
         return result_key_info;
@@ -134,6 +156,12 @@ class FileController {
     }
 
     static  async textToJsonImgBox(file_path) {
+
+
+    }
+
+    static audioDisplay(audio) {
+
 
 
     }
