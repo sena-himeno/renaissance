@@ -4,9 +4,25 @@ class FileController {
         this.audioSegments = [];
         this.key_song_info = [];
         this.key_song_info_length = 0;
+        this.img_position_y_map = {
+            'A': 10, 'Q': 10, 'Z': 10,
+            'S': 9, 'W': 9, 'X': 9,
+            'D': 8, 'E': 8, 'C': 8,
+            'F': 7, 'R': 7, 'V': 7,
+            'G': 6, 'T': 6, 'B': 6,
+            'H': 5, 'Y': 5, 'N': 5,
+            'J': 4, 'U': 4, 'M': 4,
+            'K': 3, 'I': 3, '<': 3,
+            'L': 2, 'O': 2, '>': 2,
+            ';': 1, 'P': 1, '?': 1,
+        }
+
 
     }
 
+    static get_img_position(key){
+        return img_position_y_map[key]
+    }
 
 
 
@@ -21,17 +37,13 @@ class FileController {
     async preloadAudio(key_song_path, song_key_sound_postfix) {
         console.log(this.key_song_info);
         const audio_sequence = [];
-
         for (const info of this.key_song_info) {
             console.log(info);
-
             const audio_array = [];
-
             for (let index in info.sound_name) {
                 const sound_name = info.sound_name[index];
                 const audio = new Audio();
-                    const src = key_song_path + sound_name + song_key_sound_postfix;
-
+                const src = key_song_path + sound_name + song_key_sound_postfix;
                 try {
                     await audio.load();
                     audio.src = src;
@@ -54,10 +66,8 @@ class FileController {
                     audio_array.push(new Audio());
                 }
             }
-
             audio_sequence.push(audio_array);
         }
-
         console.log(audio_sequence);
         console.log("--------------------------------");
         this.audioSegments = audio_sequence;
