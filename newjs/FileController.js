@@ -1,33 +1,16 @@
 class FileController {
     constructor(path) {
         this.path = path;
-        this.audioSegments = [];
+        this.audio_segments = [];
         this.key_song_info = [];
         this.key_song_info_length = 0;
-        this.img_position_y_map = {
-            'A': 10, 'Q': 10, 'Z': 10,
-            'S': 9, 'W': 9, 'X': 9,
-            'D': 8, 'E': 8, 'C': 8,
-            'F': 7, 'R': 7, 'V': 7,
-            'G': 6, 'T': 6, 'B': 6,
-            'H': 5, 'Y': 5, 'N': 5,
-            'J': 4, 'U': 4, 'M': 4,
-            'K': 3, 'I': 3, '<': 3,
-            'L': 2, 'O': 2, '>': 2,
-            ';': 1, 'P': 1, '?': 1,
-        }
 
 
     }
-
-    static get_img_position(key){
-        return img_position_y_map[key]
-    }
-
 
 
     async init() {
-        this.audioSegments = [];
+        this.audio_segments = [];
         this.key_song_info = await FileController.textToJsonKeyInfo(this.path);
         this.key_song_info_length = this.key_song_info.length;
         console.log(this.key_song_info_length);
@@ -70,7 +53,7 @@ class FileController {
         }
         console.log(audio_sequence);
         console.log("--------------------------------");
-        this.audioSegments = audio_sequence;
+        this.audio_segments = audio_sequence;
         return audio_sequence;
     }
 
@@ -86,8 +69,8 @@ class FileController {
     }
 
     getCurrentKeySound(index) {
-        if (index >= 0 && index < this.audioSegments.length) {
-            return this.audioSegments[index];
+        if (index >= 0 && index < this.audio_segments.length) {
+            return this.audio_segments[index];
         } else {
             console.error('Resource error: Invalid index');
             return null;
@@ -96,11 +79,11 @@ class FileController {
 
     freeFile() {
         console.log("1");
-        this.audioSegments.forEach(audio => {
+        this.audio_segments.forEach(audio => {
             audio.remove();
         });
         console.log("2");
-        this.audioSegments = [];
+        this.audio_segments = [];
         return "freeFile success"
     }
 
@@ -113,17 +96,17 @@ class FileController {
         let key_sound_name  = [];
         let count = 0;
         text.split("\n").forEach(line => {
-            let [_, key_time, sound_name, keyPressed] = line.split(",");
+            let [_, key_time, sound_name, key_pressed] = line.split(",");
             key_time = String(Math.floor(parseFloat(key_time) * 10) / 10);
             if (prev_key_time === key_time) {
-                console.log(`${prev_key_time} and ${key_time}`)
-                console.log(result_key_info)
+                // console.log(`${prev_key_time} and ${key_time}`)
+                // console.log(result_key_info)
                 result_key_info[count-1].sound_name.push(sound_name);
             } else {
                 result_key_info.push({
                     key_time: key_time,
                     sound_name: [sound_name],
-                    keyPressed: keyPressed,
+                    key_pressed: key_pressed,
                 });
                 prev_key_time = key_time;
                 key_sound_name = [sound_name];
