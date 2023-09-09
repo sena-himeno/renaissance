@@ -82,5 +82,10 @@ class Select_Soung {
 
 
 }
-
+//
+// this.txt_path = null;
+// this.song_path = null;
+// this.key_soung_path = null;
+// this.song_key_sound_postfix = null;
+// this.song_img_src = null;
 

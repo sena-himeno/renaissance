@@ -57,34 +57,6 @@ class FileController {
         return audio_sequence;
     }
 
-
-
-
-
-    async loadSong(key_song_path,song_name,song_key_sound_postfix){
-        console.log()
-        const song = new Audio();
-        const src = key_song_path + song_name + song_key_sound_postfix;
-        try {
-            await song.load();
-            song.src = src;
-            await new Promise((resolve) => {
-                song.addEventListener('loadeddata', () => {
-                    resolve();
-                });
-                song.addEventListener('error', (event) => {
-                    console.error('song resource error', event);
-                    console.log(`song loading exception: ${src}`);
-                    resolve();
-                });
-            });
-        } catch (error) {
-            console.log('song load error', error);
-            console.log(`song loading exception: ${src}`);
-        }
-        return song
-    }
-
     getCurrentKeySound(index) {
         if (index >= 0 && index < this.audio_segments.length) {
             return this.audio_segments[index];
@@ -103,7 +75,6 @@ class FileController {
         this.audio_segments = [];
         return "freeFile success"
     }
-
 
     static async textToJsonKeyInfo(txt_path) {
         console.log(txt_path)

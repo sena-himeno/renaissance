@@ -52,10 +52,18 @@ class SoundController {
 
     audio_play(current_sound) {
         console.log(current_sound[0])
-        current_sound[0].play();
-        if (current_sound === 2) {
-            current_sound[1].play();
+
+        const audio1 = new Audio();
+        audio1.src = current_sound[0].src;
+        if (current_sound === 2){
+            const audio2 = new Audio();
+            audio2.src = current_sound[1].src;
+            audio2.play()
         }
+        audio1.play()
+
+
+
     }
 
 
