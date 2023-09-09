@@ -8,6 +8,10 @@ class Listener{
 
     }
 
+    init(){
+
+    }
+
     async main() {
 
         let last_timestamp = performance.now();

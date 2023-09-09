@@ -66,30 +66,35 @@
 // console.log(Rule.easy_module("Z"))
 // console.log(Rule.easy_module("A"))
 // console.log(Rule.easy_module("^"))
-async function main() {
+// async function main() {
+//
+//     const fc = new FileController("./AS06/song.txt")
+//     const key_song_path = './AS06/Key/';
+//     const song_key_sound_postfix = '.ogg';
+//
+//     await fc.init()
+//     await fc.preloadAudio(key_song_path, song_key_sound_postfix);
+//
+//     const sc = new SoundController(fc.key_song_info, fc.audio_segments);
+//     sc.init();
+//
+//     const kb = new KeyBoard(sc)
+//     kb.init()
+//
+//     const song = await new Song("./AS06/SONG.ogg").init();
+//     await song.play()
+//
+//
+//     const listener = new Listener(kb,fc,sc,null,song)
+//     console.log(listener.sound_controller)
+//     await listener.main()
+//
+//     kb.keyEvent();
+//
+// }
+//
 
-    const fc = new FileController("./AS06/song.txt")
-    const key_song_path = './AS06/Key/';
-    const song_key_sound_postfix = '.ogg';
 
-    await fc.init()
-    await fc.preloadAudio(key_song_path, song_key_sound_postfix);
+// -----------------------
 
-    const sc = new SoundController(fc.key_song_info, fc.audio_segments);
-    sc.init();
-
-    const kb = new KeyBoard(sc)
-    kb.init()
-
-    const song = await new Song("./AS06/SONG.ogg").init();
-    await song.play()
-
-
-    const listener = new Listener(kb,fc,sc,null,song)
-    console.log(listener.sound_controller)
-    await listener.main()
-
-    kb.keyEvent();
-
-}
 

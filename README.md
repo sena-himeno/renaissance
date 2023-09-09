@@ -25,14 +25,14 @@
 
 | name           | status          | description                |
 | -------------- |-----------------|----------------------------|
-| FileControoler | Done            | load file                  |
+| FileControoler | Done(basic        | load file                  |
 | KeyBoard       | to be continued | key event                  |
-| KeySound       | Done             | key sound controller       | 
-| Score          | pending         | score calculator           |
+| KeySound       | Done(basic      | key sound controller       | 
+| Score          | to be continued | score calculator           |
 | Onclick        | pending         | button onclick event       |
-| SelectSong     | pending         | song selection operation   |
+| SelectSong     | to be continued | song selection operation   |
 | Rule           | to be continued | score calculation standard |
-| Listener       | pending         | global event handling      |
+| Listener       | to be continued | global event handling      |
 | DOM            | pending         | DOM and  variable          |
 | View           | pending         | canvas -> print key        |
 | Lyrics         | unknown         |                            |

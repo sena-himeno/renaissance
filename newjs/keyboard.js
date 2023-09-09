@@ -14,11 +14,14 @@ class KeyBoard{
     constructor(sound_controller) {
         this.key_array = [];
         this.sound_controller = sound_controller;
-
+        this.key_count = 0;
+        this.valid_key = 0;
     }
 
     init(){
         this.key_array = [];
+        this.valid_key = 0;
+        this.key_count = 0;
     }
     static checkKey(key){
         if(key === ';' || key ==='<' || key === '>' || key === '?'){
@@ -36,8 +39,9 @@ class KeyBoard{
         document.addEventListener('keydown', (event)  => {
             const key_pressed = event.key;
             const mappedKey = KeyBoard.checkKey(key_pressed);
-
+            this.key_count ++;
             if (mappedKey !== undefined) {
+                this.valid_key++;
                 console.log(`valid key：${key_pressed}`);
                 console.log(this);
                 this.sound_controller.audio_play(this.sound_controller.audio_segments[this.sound_controller.current_count]);
