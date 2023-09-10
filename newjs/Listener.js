@@ -13,20 +13,24 @@ class Listener{
     }
 
     async main() {
-
         let last_timestamp = performance.now();
-        const loop  = (timestamp) => {
-            const elapsed_time = timestamp - last_timestamp;
-            if (elapsed_time >= 25) {
-                this.sound_controller.sync_key_sound(this.sound_controller.current_count, this.song);
-                last_timestamp = timestamp;
+
+        const loop = (timestamp) => {
+            if (!this.song.paused) {
+                const elapsed_time = timestamp - last_timestamp;
+                if (elapsed_time >= 10) {
+                    this.sound_controller.sync_key_sound(this.sound_controller.current_count, this.song);
+                    last_timestamp = timestamp;
+                }
+                requestAnimationFrame(loop);
+            } else {
+                cancelAnimationFrame(loop)
+                this.keyboard.cancelKeyEvent();
             }
-            requestAnimationFrame(loop);
         }
+
         requestAnimationFrame(loop);
-
     }
-
 
 
 

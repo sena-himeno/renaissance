@@ -1,6 +1,10 @@
 class SelectSong{
     constructor(song_info) {
         this.song_info = song_info;
+        this.init()
+    }
+
+    init(){
         this.current_index = 0;
         this.song_info_length = 0;
         this.txt_path = null;
@@ -10,9 +14,6 @@ class SelectSong{
         this.song_img_src = null;
     }
 
-    init(){
-
-    }
     getSongInfoLength(){
         let length = 0;
         for (length in this.song_info){

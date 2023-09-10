@@ -16,15 +16,45 @@ class Rule {
     5: 'H', 4: 'J', 3: 'K', 2: 'L', 1: ';',
 }
 
-    constructor() {
+    constructor(keyboard,score,view) {
+        this.keyboard = keyboard;
+        this.score = score;
+        this.view = view;
 
     }
 
-    static easy_module(key) {
+    static easyModule(key) {
         if(this.key_map_easy_module[key] === undefined){
             return "baka"; // -------------------
         }
         return this.reverse_module[this.key_map_easy_module[key]];
     }
+
+    matchKeyNormal(song, key_song_info, current_count, key){
+        console.log(`current press key: ${key} , you should press ${key_song_info[current_count].key_pressed}`);
+        this.current_time = String(Math.floor(song.current_time * 10) / 10);
+        if (this.current_time === key_song_info[current_count].key_time) {
+            this.score.ruleValid();
+            this.score.calculateScoreByKey();
+        } else {
+            this.score.ruleInvalid();
+        }
+    }
+    matchKeyEasy(song, key_song_info, current_count, key){
+        console.log(`current press key: ${key} , you should press ${key_song_info[current_count].key_pressed}`);
+        this.current_time = String(Math.floor(song.current_time * 10) / 10);
+        if (this.current_time === key_song_info[current_count].key_time
+            && Rule.easyModule(key) === key_song_info[current_count].key_pressed
+        ) {
+            this.score.ruleValid();
+            this.score.calculateScoreByKey();
+        } else {
+            this.score.ruleInvalid();
+        }
+    }
+
+
+
+
 
 }

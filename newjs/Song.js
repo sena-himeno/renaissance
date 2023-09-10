@@ -30,7 +30,7 @@ class Song{
             console.log(`song loading exception: ${src}`);
         }
         this.song = song;
-        return song
+        // return song
     }
 
     play(){
