@@ -91,7 +91,9 @@ async function main() {
     console.log(listener.sound_controller)
     await listener.main()
 
-    kb.keyEvent();
+    kb.keyEvent((key) =>{
+        listener.listenerKeyDown(key);
+    } );
 
 }
 

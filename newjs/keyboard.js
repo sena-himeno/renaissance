@@ -12,9 +12,7 @@ class KeyBoard{
         ';': 1, 'P': 11, '?': 21,
     }
     constructor(sound_controller) {
-
         this.sound_controller = sound_controller;
-
         this.init();
     }
 
@@ -35,19 +33,30 @@ class KeyBoard{
         return undefined
     }
 
-    keyEvent() {
-        this.key_event = (event)  => {
+    keyEvent(callback) {
+        this.key_event = (event) => {
             const key_pressed = event.key;
             const mapped_key = KeyBoard.checkKey(key_pressed);
-            this.key_count ++;
+            this.key_count++;
             if (mapped_key !== undefined) {
                 this.valid_key++;
                 console.log(`valid key：${key_pressed}`);
-                console.log(this);
-                this.sound_controller.audio_play(this.sound_controller.audio_segments[this.sound_controller.current_count]);
                 this.key_array.push(mapped_key);
+                // console.log(mapped_key);
+                // this.sound_controller.audio_play(this.sound_controller.audio_segments[this.sound_controller.current_count]);
+                // if (this.rule.easy_module_status){
+                //     this.rule.matchKeyEasy()
+                // }else{
+                //     this.rule.matchKeyNormal()
+                // }
+                if (callback) {
+                    callback(mapped_key);
+                }
             } else {
                 console.log(`invalid key：${key_pressed}`);
+                if (callback) {
+                    callback(undefined);
+                }
             }
         };
         document.addEventListener('keydown', this.key_event);

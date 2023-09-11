@@ -20,8 +20,10 @@ class Rule {
         this.keyboard = keyboard;
         this.score = score;
         this.view = view;
-
     }
+    init(){
+        this.easy_module_status = 0;
+     }
 
     static easyModule(key) {
         if(this.key_map_easy_module[key] === undefined){

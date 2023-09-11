@@ -1,16 +1,28 @@
 class Listener{
-    constructor(key_board,file_controller,sound_controller,view,song) {
+    constructor(key_board,file_controller,sound_controller,view,song,rule) {
         this.keyboard = key_board;
         this.file_controller = file_controller;
         this.sound_controller = sound_controller;
         this.view = view;
         this.song =  song
+        this.rule = rule
 
     }
 
     init(){
-
+        this.keyboard.init();
     }
+
+    listenerKeyDown(key){
+        this.sound_controller.audio_play(this.sound_controller.audio_segments[this.sound_controller.current_count]);
+        console.log(`------------ ${key} -------------`)
+        // if (this.rule.easy_module_status){
+        //     this.rule.matchKeyEasy()
+        // }else {
+        //     this.rule.matchKeyNormal()
+        // }
+    }
+
 
     async main() {
         let last_timestamp = performance.now();

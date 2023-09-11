@@ -1,10 +1,9 @@
 class FileController {
     constructor(path) {
         this.path = path;
-        this.audio_segments = [];
-        this.key_song_info = [];
-        this.key_song_info_length = 0;
 
+        // to be continued
+        this.audio_pool =[];
 
     }
 
@@ -81,7 +80,7 @@ class FileController {
         const result_key_info = []
         const text = await fetch(txt_path).then(response => response.text());
         let prev_key_time = null;
-        let key_sound_name  = [];
+        let key_sound_name = null;
         let count = 0;
         text.split("\n").forEach(line => {
             let [_, key_time, sound_name, key_pressed] = line.split(",");
@@ -116,7 +115,7 @@ class FileController {
         const result_lyrics = []
         const text = await fetch(txt_path).then(response => response.text());
         let prev_key_time = null;
-        let key_sound_name = [];
+        let key_sound_name = null;
         text.split("\n").forEach(line => {
             let [_, key_time, sound_name, keyPressed] = line.split(",");
             key_time = String(Math.floor(parseFloat(key_time) * 10) / 10);
