@@ -34,7 +34,7 @@
 | Rule           | to be continued | score calculation standard |
 | Listener       | to be continued | global event handling      |
 | DOM            | pending         | DOM and  variable          |
-| View           | pending         | canvas -> print key        |
+| View           |  to be continued         | canvas -> print key        |
 | Lyrics         | unknown         |                            |
 |                |                 |                            |
 

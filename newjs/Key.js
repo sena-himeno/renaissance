@@ -23,10 +23,13 @@ class PrintKey{
         'G': 8, 'T': 18, 'B': 28,
         'H': 9, 'Y': 19, 'N': 29,
     }
-    constructor(key,current_time,ctx) {
+    constructor(key,ctx,canvas_main,current_time) {
         this.key = key;
-        this.current_time = current_time;
         this.ctx = ctx;
+        this.current_time = current_time;
+        this.canvas_main = canvas_main;
+
+        this.img_key_src = "/img/SongAlphabet.png" ;
 
         this.img_position_x = 0;
         this.img_position_y = 0;
@@ -34,40 +37,63 @@ class PrintKey{
         this.img_key_size_x = 0;
         this.img_key_size_y = 0;
 
-        this.img_key_size_x = 0;
-        this.img_key_size_y = 0;
+        this.print_key_size_x = 0;
+        this.print_key_size_y = 0;
 
         this.init_print_x = 0;
         this.init_print_y = 0;
 
-        this.vx = -5;
+        this.vx = -3;
         this.vy = 0
+
+        this.status = 1; // invalid / valid
+
+        this.init();
 
     }
 
+    draw(img_key){
+        this.ctx.drawImage(img_key,
+            this.img_position_x,this.img_position_y,
+            this.img_key_size_x,this.img_key_size_y,
+            this.init_print_x,this.init_print_y,
+            this.print_key_size_x,this.print_key_size_y
+        );
+    }
+    updateKey(){
+        this.init_print_x += this.vx;
+        if (this.init_print_x  <= - 250) {
+            this.status = 0;
+        }
+    }
+
     init(){
-        this.img_key_size_x = 41;
+        this.img_key_size_x = 35;
         this.img_key_size_y = 35;
 
         this.initKeyAtImgPosition()
         this.initPrintKeyPosition();
-
-
+        this.initPrintKeySize();
     }
 
+    initPrintKeySize(){
+        this.print_key_size_x = 28;
+        this.print_key_size_y = 28;
+    }
     initKeyAtImgPosition(){
-        let row_index = Math.floor( PrintKey.img_key_map[this.key] / 10) -1
+        let row_index = Math.floor( PrintKey.img_key_map[this.key] / 10)
         let col_index = PrintKey.img_key_map[this.key] % 10
 
         this.img_position_x = col_index * this. img_key_size_x;
-        this.img_key_size_y = row_index * this.img_key_size_y;
+        this.img_position_y = row_index * this.img_key_size_y;
 
 
 
     }
     initPrintKeyPosition(){
-        // this.init_print_x = ctx.width;
-        this.init_print_y = (PrintKey.init_position_y_map[this.key]) * 30 + 1
+        this.init_print_x = this.canvas_main.width;
+        console.log(`init_print_x : ${this.init_print_x}`)
+        this.init_print_y = (PrintKey.init_position_y_map[this.key] ) * 30 + 1
     }
 
 
