@@ -23,6 +23,7 @@ class Score {
     }
 
     ruleValid() {
+        console.log("Valid Key")
         this.current_milestone_value++;
         if (this.current_milestone_value >= this.milestone_value) {
             this.current_milestone_value = 0;
@@ -34,6 +35,7 @@ class Score {
     }
 
     ruleInvalid() {
+        console.log("Invalid Key");
         this.current_milestone_value > 0 ? this.current_milestone_value-- : 0;
         if (this.current_combo >= this.max_combo) {
             this.max_combo = this.current_combo;
@@ -47,15 +49,16 @@ class Score {
         console.log(`current score : ${this.score}`);
     }
 
-    // calculateScore(song, key_song_info, current_count, key) {
-    //     this.current_time = String(Math.floor(song.current_time * 10) / 10);
-    //     if (this.current_time === key_song_info[current_count].key_time) {
-    //         this.ruleValid();
-    //         this.calculateScoreByKey();
-    //     } else {
-    //         this.ruleInvalid();
-    //     }
-    // }
+    calculateScore(song, key_song_info, current_count, key) {
+        this.current_time = String(Math.floor(song.current_time * 10) / 10);
+        // if (this.current_time === key_song_info[current_count].key_time && key === key_song_info[current_count].key_pressed) {
+        if (1) {
+            this.ruleValid();
+            this.calculateScoreByKey();
+        } else {
+            this.ruleInvalid();
+        }
+    }
 
     calculateScoreByArray(keyArray, keyPressTimeArray, keyInfo) {
 

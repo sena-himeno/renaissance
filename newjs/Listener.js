@@ -6,12 +6,23 @@ class Listener{
         this.view = view;
         this.song =  song
         this.rule = rule
+        this.frames = 1000/60;
 
     }
 
     init(){
         this.keyboard.init();
     }
+
+    listenerTimeline(){
+
+    }
+
+    listenerSoundController(){
+        this.sound_controller.sync_key_sound(this.sound_controller.current_count, this.song);
+
+    }
+
 
     listenerKeyDown(key){
         this.sound_controller.audio_play(this.sound_controller.audio_segments[this.sound_controller.current_count]);
@@ -23,15 +34,15 @@ class Listener{
         // }
     }
 
-
     async main() {
         let last_timestamp = performance.now();
-
         const loop = (timestamp) => {
             if (!this.song.paused) {
                 const elapsed_time = timestamp - last_timestamp;
                 if (elapsed_time >= 10) {
-                    this.sound_controller.sync_key_sound(this.sound_controller.current_count, this.song);
+                    this.listenerSoundController();
+
+
                     last_timestamp = timestamp;
                 }
                 requestAnimationFrame(loop);

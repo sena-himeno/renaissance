@@ -1,23 +1,38 @@
 class View{
-    constructor() {
+    constructor(ctx) {
+        this.ctx = ctx;
+        this.frames = 1000/60;
 
-        this.img_position_y_map = {
-            'A': 10, 'Q': 10, 'Z': 10,
-            'S': 9, 'W': 9, 'X': 9,
-            'D': 8, 'E': 8, 'C': 8,
-            'F': 7, 'R': 7, 'V': 7,
-            'G': 6, 'T': 6, 'B': 6,
-            'H': 5, 'Y': 5, 'N': 5,
-            'J': 4, 'U': 4, 'M': 4,
-            'K': 3, 'I': 3, '<': 3,
-            'L': 2, 'O': 2, '>': 2,
-            ';': 1, 'P': 1, '?': 1,
+    }
+
+    addKeyInCanvas(key){
+
+    }
+    removeKeyInCanvas(key){
+
+    }
+
+    async refresh() {
+
+        let last_timestamp = 0;
+
+        function animate(timestamp) {
+            const elapsed = timestamp - last_timestamp;
+
+            if (elapsed >= frames) {
+
+
+
+                last_timestamp = timestamp;
+            }
+
+            requestAnimationFrame(animate);
         }
+
+        requestAnimationFrame(animate);
     }
 
-    static get_img_position(key){
-        return img_position_y_map[key]
-    }
+
 
 
 }

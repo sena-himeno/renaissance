@@ -2,7 +2,7 @@ class FileController {
     constructor(path) {
         this.path = path;
 
-        // to be continued
+        // To be continued, provided that someone is involved in the design
         this.audio_pool =[];
 
     }
@@ -10,7 +10,7 @@ class FileController {
 
     async init() {
         this.audio_segments = [];
-        this.key_song_info = await FileController.textToJsonKeyInfo(this.path);
+        this.key_song_info = await FileController.textToJsonKeyInfoOld(this.path);
         this.key_song_info_length = this.key_song_info.length;
         console.log(this.key_song_info_length);
         console.log(this.key_song_info);
@@ -66,16 +66,15 @@ class FileController {
     }
 
     freeFile() {
-        console.log("1");
         this.audio_segments.forEach(audio => {
-            audio.remove();
+            audio = null;
         });
-        console.log("2");
         this.audio_segments = [];
         return "freeFile success"
     }
 
-    static async textToJsonKeyInfo(txt_path) {
+    // resources for Kogado Studio
+    static async textToJsonKeyInfoOld(txt_path) {
         console.log(txt_path)
         const result_key_info = []
         const text = await fetch(txt_path).then(response => response.text());
@@ -108,7 +107,7 @@ class FileController {
 
 
 
-    // to be continued
+    // To be continued, provided that someone is involved in the design
     static async textToJsonLyrics(txt_path,language) {
         console.log(txt_path)
 
@@ -135,11 +134,18 @@ class FileController {
         return result_lyrics;
     }
 
-
-    static  async textToJsonImgBox(file_path) {
+    // To be continued, provided that someone is involved in the design
+    static  async textToJsonImgBox(txt_path) {
 
 
     }
+    //To be continued, provided that someone is involved in the design
+    static  async textToJsonKeyInfo(txt_path) {
+
+
+    }
+
+
 
     static audioDisplay(audio) {
 

@@ -68,8 +68,8 @@
 // console.log(Rule.easy_module("^"))
 async function main() {
 
-    const fc = new FileController("./AS06/song.txt")
-    const key_song_path = './AS06/Key/';
+    const fc = new FileController("../page/SR/SR01/song.txt")
+    const key_song_path = '../page/SR/SR01/Key/';
     const song_key_sound_postfix = '.ogg';
 
     await fc.init()
@@ -81,9 +81,11 @@ async function main() {
     const kb = new KeyBoard(sc)
     kb.init()
 
-    const song = await new Song("./AS06/SONG.ogg");
+    const song = await new Song("../page/SR/SR01/song.ogg");
     await song.init()
     song.play();
+
+    const score = new Score(kb);
 
 
 
@@ -93,12 +95,30 @@ async function main() {
 
     kb.keyEvent((key) =>{
         listener.listenerKeyDown(key);
+        score.calculateScore(song,fc.key_song_info,sc.current_count,key)
+
     } );
+
 
 }
 
 
 
-// -----------------------
+// ---------------------- test key
+window.addEventListener("load", function () {
+
+    const key1 =  new PrintKey('A',null,null)
+    key1.init()
+    console.log(key1)
+    const key2 =  new PrintKey('B',null,null)
+    key2.init()
+    console.log(key2)
+    const key3 =  new PrintKey('W',null,null)
+    key3.init()
+    console.log(key3)
+
+})
+
+
 
 

@@ -28,17 +28,17 @@ class SoundController {
 
     sync_key_sound(current_count, song) {
         this.current_time = String(Math.floor(song.currentTime * 10) / 10);
-        console.log(this.current_sound)
-        console.log(`${this.current_count} :  ${this.current_time}  / ${this?.key_sound_info[this?.current_count]?.key_pressed} sound name is ${this.current_sound} `)
+        // console.log(this.current_sound)
+        // console.log(`${this.current_count} :  ${this.current_time}  / ${this?.key_sound_info[this?.current_count]?.key_pressed} sound name is ${this.current_sound} `)
         if (!song.paused) {
                 if (this.current_count <= this.audio_segments.length -1 ) {
                 console.log(`${this.current_time} / ${this.key_sound_info[current_count].key_time}`)
                 if (this.key_sound_info[current_count].key_time === this.current_time) {
                     this.current_sound = this.key_sound_info[current_count].sound_name;
-                    console.log("syncing")
-                    console.log(this.current_sound)
+                    // console.log("syncing")
+                    // console.log(this.current_sound)
                     if (1) { // --------------------------
-                        console.log("auto display key sound")
+                        // console.log("auto display key sound")
                         this.audio_play(this.audio_segments[this.current_count]);
 
                     }
