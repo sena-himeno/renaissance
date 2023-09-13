@@ -34,7 +34,7 @@ class Score {
         }
     }
 
-    ruleInvalid() {
+        ruleInvalid() {
         console.log("Invalid Key");
         this.current_milestone_value > 0 ? this.current_milestone_value-- : 0;
         if (this.current_combo >= this.max_combo) {

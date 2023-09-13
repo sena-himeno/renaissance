@@ -23,11 +23,9 @@ class PrintKey{
         'G': 8, 'T': 18, 'B': 28,
         'H': 9, 'Y': 19, 'N': 29,
     }
-    constructor(key,ctx,canvas_main,current_time) {
+    constructor(key) {
         this.key = key;
-        this.ctx = ctx;
-        this.current_time = current_time;
-        this.canvas_main = canvas_main;
+        // this.canvas_main = canvas_main;
 
         this.img_key_src = "/img/SongAlphabet.png" ;
 
@@ -43,7 +41,7 @@ class PrintKey{
         this.init_print_x = 0;
         this.init_print_y = 0;
 
-        this.vx = -3;
+        this.vx = -5;
         this.vy = 0
 
         this.status = 1; // invalid / valid
@@ -52,8 +50,8 @@ class PrintKey{
 
     }
 
-    draw(img_key){
-        this.ctx.drawImage(img_key,
+    draw(img_key,ctx){
+        ctx.drawImage(img_key,
             this.img_position_x,this.img_position_y,
             this.img_key_size_x,this.img_key_size_y,
             this.init_print_x,this.init_print_y,
@@ -62,13 +60,13 @@ class PrintKey{
     }
     updateKey(){
         this.init_print_x += this.vx;
-        if (this.init_print_x  <= - 250) {
+        if (this.init_print_x  <= - 500) {
             this.status = 0;
         }
     }
 
     init(){
-        this.img_key_size_x = 35;
+        this.img_key_size_x = 41;
         this.img_key_size_y = 35;
 
         this.initKeyAtImgPosition()
@@ -84,14 +82,15 @@ class PrintKey{
         let row_index = Math.floor( PrintKey.img_key_map[this.key] / 10)
         let col_index = PrintKey.img_key_map[this.key] % 10
 
-        this.img_position_x = col_index * this. img_key_size_x;
+        this.img_position_x = col_index * this.img_key_size_x ;
         this.img_position_y = row_index * this.img_key_size_y;
 
 
 
     }
     initPrintKeyPosition(){
-        this.init_print_x = this.canvas_main.width;
+        // this.init_print_x = this.canvas_main.width;
+        this.init_print_x = 900;
         console.log(`init_print_x : ${this.init_print_x}`)
         this.init_print_y = (PrintKey.init_position_y_map[this.key] ) * 30 + 1
     }

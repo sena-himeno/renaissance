@@ -6,16 +6,51 @@ class Listener{
         this.view = view;
         this.song =  song
         this.rule = rule
-        this.frames = 1000/60;
+        this.init()
+
 
     }
 
     init(){
         this.keyboard.init();
+        this.print_key_count = 0;
+        this.current_time = 0;
+        this.current_count = 0;
+        this.mark_Key_time = 0;
     }
 
     listenerTimeline(){
+        // console.log("-----------------------------")
+        this.current_time = String(Math.floor(this.song.currentTime * 10) / 10);
+        // console.log(`${ Math.floor(( this.sound_controller.key_sound_info[this.sound_controller.current_count].key_time - 2) * 10 ) / 10  } / ${this.current_time }`)
+        // console.log(`${ String(Math.floor(( this.sound_controller.key_sound_info[this.sound_controller.current_count].key_time - 2) * 10 ) / 10)   === this.current_time }`)
+        if (!this.song.paused) {
 
+            if (this.sound_controller.current_count <= this.sound_controller.audio_segments.length -1 ) {
+
+                if ( String(Math.floor(( this.sound_controller.key_sound_info[this.print_key_count].key_time - 2) * 10 ) / 10)   === this.current_time) {
+                    console.log("-----------------------")
+                    // console.log(this.sound_controller.key_sound_info[this.print_key_count].key_pressed)
+                    // console.log(KeyBoard.checkKey(this.sound_controller.key_sound_info[this.print_key_count].key_pressed))
+                    if (this.mark_key_time !== this.current_time){
+                    const printKey = new PrintKey(KeyBoard.checkKey(this.sound_controller.key_sound_info[this.print_key_count].key_pressed));
+                    console.log(printKey);
+                    this.view.addKeyInCanvas(printKey)
+                    this.print_key_count ++;
+                    this.mark_key_time = this.current_time
+
+                    }
+
+                }
+
+                //  song current time
+                if (this.sound_controller.key_sound_info[this.sound_controller.current_count].key_time === this.current_time) {
+
+
+                }
+
+            }
+        }
     }
 
     listenerSoundController(){
@@ -42,6 +77,7 @@ class Listener{
                 if (elapsed_time >= 10) {
                     this.listenerSoundController();
 
+                    this.listenerTimeline();
 
                     last_timestamp = timestamp;
                 }

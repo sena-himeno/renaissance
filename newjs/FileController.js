@@ -100,7 +100,7 @@ class FileController {
             }
             key_sound_name = [];
         });
-
+        console.log(result_key_info)
         return result_key_info;
     }
 

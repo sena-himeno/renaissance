@@ -125,14 +125,42 @@
 
 
 
-async function main(){
+// async function main(){
+//
+//     const img_key = new Image();
+//     img_key.src = "/img/SongAlphabet.png"
+//
+//     const canvas_main = document.getElementById("main_canvas");
+//     canvas_main.width = 1200;
+//     canvas_main.height = 600;
+//     const ctx = canvas_main.getContext('2d');
+//
+//     const view = new View(canvas_main,ctx,img_key);
+//     view.init();
+//
+//     await view.refresh()
+//
+//
+//     // console.log(key)
+//     // key.draw(img_key);
+//     setInterval(() => {
+//     let key = new PrintKey('D',canvas_main,null);
+//         view.addKeyInCanvas(key);
+//         console.log(view.current_vaild_key_count)
+//
+//     },500)
+//
+// }
+//
 
+// test print key
+async function main(){
     const img_key = new Image();
     img_key.src = "/img/SongAlphabet.png"
 
     const canvas_main = document.getElementById("main_canvas");
-    canvas_main.width = 1200;
-    canvas_main.height = 300;
+    canvas_main.width = 800;
+    canvas_main.height = 600;
     const ctx = canvas_main.getContext('2d');
 
     const view = new View(canvas_main,ctx,img_key);
@@ -140,15 +168,36 @@ async function main(){
 
     await view.refresh()
 
+    const fc = new FileController("../page/SR/SR01/song.txt")
+    const key_song_path = '../page/SR/SR01/Key/';
+    const song_key_sound_postfix = '.ogg';
 
-    // console.log(key)
-    // key.draw(img_key);
-    setInterval(() => {
-    let key = new PrintKey('A',ctx,canvas_main,null);
-        view.addKeyInCanvas(key);
+    await fc.init()
+    await fc.preloadAudio(key_song_path, song_key_sound_postfix);
 
-    },500)
+    const sc = new SoundController(fc.key_song_info, fc.audio_segments);
+    sc.init();
+
+    const kb = new KeyBoard(sc)
+    kb.init()
+
+    const song = await new Song("../page/SR/SR01/song.ogg");
+    await song.init()
+    song.play();
+
+    const score = new Score(kb);
+
+
+
+    const listener = new Listener(kb,fc,sc,view,song.song)
+    console.log(listener.sound_controller)
+
+    await listener.main()
+
+    kb.keyEvent((key) =>{
+        listener.listenerKeyDown(key);
+        score.calculateScore(song,fc.key_song_info,sc.current_count,key)
+
+    } );
 
 }
-
-
