@@ -16,7 +16,7 @@ class Listener{
         this.print_key_count = 0;
         this.current_time = 0;
         this.current_count = 0;
-        this.mark_Key_time = 0;
+        this.mark_key_time = 0;
     }
 
     listenerTimeline(){
@@ -60,7 +60,8 @@ class Listener{
 
 
     listenerKeyDown(key){
-        this.sound_controller.audio_play(this.sound_controller.audio_segments[this.sound_controller.current_count]);
+        // console.log(this.sound_controller.audio_segments[this.sound_controller.current_count] )
+        this.sound_controller.audio_play(this.sound_controller.audio_segments[this.sound_controller.current_count - 1]);
         console.log(`------------ ${key} -------------`)
         // if (this.rule.easy_module_status){
         //     this.rule.matchKeyEasy()
@@ -74,7 +75,7 @@ class Listener{
         const loop = (timestamp) => {
             if (!this.song.paused) {
                 const elapsed_time = timestamp - last_timestamp;
-                if (elapsed_time >= 10) {
+                if (elapsed_time >= 20) {
                     this.listenerSoundController();
 
                     this.listenerTimeline();

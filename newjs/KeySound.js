@@ -31,7 +31,7 @@ class SoundController {
         // console.log(this.current_sound)
         // console.log(`${this.current_count} :  ${this.current_time}  / ${this?.key_sound_info[this?.current_count]?.key_pressed} sound name is ${this.current_sound} `)
         if (!song.paused) {
-                if (this.current_count <= this.audio_segments.length -1 ) {
+                if (this.current_count <= this.audio_segments.length  ) {
                 // console.log(`${this.current_time} / ${this.key_sound_info[current_count].key_time}`)
                 if (this.key_sound_info[current_count].key_time === this.current_time) {
                     this.current_sound = this.key_sound_info[current_count].sound_name;

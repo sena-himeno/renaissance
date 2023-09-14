@@ -3,7 +3,7 @@ class View{
         this.main_canvas = main_canvas
         this.ctx = ctx;
         this.img_key = img_key;
-        this.frames = 1000/150;
+        this.frames = 1000/100;
 
         this.vaild_key_pool = [];
         this.current_vaild_key_count = 0;
@@ -55,7 +55,7 @@ class View{
             const elapsed = timestamp - last_timestamp;
 
             if (elapsed >= this.frames) {
-                this.ctx.clearRect(0, 0, this.main_canvas.width, this.main_canvas.height);
+                // this.ctx.clearRect(0, 0, this.main_canvas.width, this.main_canvas.height);
                 this.updateKeyInCanvas();
 
                 last_timestamp = timestamp;
