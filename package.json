@@ -1,5 +1,10 @@
 {
+  "scripts": {
+    "start": "serve .",
+    "dev": "serve newjs"
+  },
   "dependencies": {
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "serve": "^14.2.1"
   }
 }

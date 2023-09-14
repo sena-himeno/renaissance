@@ -1,12 +1,29 @@
-# renaissance
+# Renaissance
+
 文艺复兴
 
+# 如何使用
+
+ 1. 安裝 Node.js
+
+ https://nodejs.org/en/
+
+ 2. 安裝依赖
+
+```bash
+npm install
+```
+
+ 3. 运行本機服務器
+
+```bash
+npm start
+```
+
+然後打開 http://localhost:3000
 
 
-
-
-
-# schedule
+# Schedule
 
 ## UI
 
